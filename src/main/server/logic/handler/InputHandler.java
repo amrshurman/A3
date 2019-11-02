@@ -129,6 +129,9 @@ public class InputHandler {
 				oo.setState(state);
 			} else if (input.equalsIgnoreCase("log out")) {
 				output = "Successfully Log Out!";
+				if (Config.testMode==true) {
+					output = "log out" + "\nSuccessfully Log Out!";
+					}
 				state = WAITING;
 				oo.setOutput(output);
 				oo.setState(state);

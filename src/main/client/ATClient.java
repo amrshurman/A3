@@ -66,6 +66,9 @@ public class ATClient implements Runnable {
 			logger.info(String.format ("Class: %-12s: %s",this.getClass().getSimpleName(), message));
 			System.out.println("Fail to connect to the server,please try later!");
 	   }
+	while (true) {
+			
+		}
 	}
 	public int getID () {
 		return this.ID;
@@ -111,6 +114,10 @@ public class ATClient implements Runnable {
 					streamOut.write("admin" + "\n");
 					//System.out.println("admin");
 						}
+						if (countC1==3) {
+							streamOut.write("log out" + "\n");
+							//System.out.println("admin");
+								}
 						countC1++;
 					}
 				} else {
