@@ -8,6 +8,7 @@ import java.io.OutputStreamWriter;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
+import main.utilities.Config;
 import main.utilities.Trace;
 
 import org.apache.log4j.Logger;

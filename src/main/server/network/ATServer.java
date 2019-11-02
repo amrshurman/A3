@@ -38,7 +38,21 @@ public class ATServer implements Runnable {
 			logger.fatal(ioe);
 		}
 	}
-	
+	public ATServer(int port,String s) {
+		Config.testMode=true;
+		try {
+			logger.info("Binding to port " + port);
+			clients = new HashMap<Integer, ServerThread>();
+			server = new ServerSocket(port);
+			server.setReuseAddress(true);
+			start();
+		} catch (IOException ioe) {
+			logger.fatal(ioe);
+		}
+		while (true) {
+			
+		}
+	}
 	public void start() {
 		if (thread == null) {
 			thread = new Thread(this);
@@ -106,7 +120,9 @@ public class ATServer implements Runnable {
 				clientSetState(from,so.getState());//System.out.println("1");
 				logger.info(String.format("Output to %s:%d"+" "+output,from.getSocketAddress(),from.getID()));
 			}else{
+				Config.clerkID++;
 				Client client=new Client(from,InputHandler.WAITING);
+				System.out.println("LOL");
 				clientList.add(client);
 				so=handler.processInput(input,InputHandler.WAITING);
 				output=so.getOutput()+"\n";

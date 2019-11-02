@@ -27,11 +27,11 @@ public class OutputHandler {
 	public static final int REGISTERFORCOURSE = 12;
 	public static final int DROPCOURSE = 13;
 	public static final int DEREGISTERCOURSE = 14;
-	
 	public Output clerkLogin(String input) {
 		Output output = new Output("", 0);
 		if (input.equalsIgnoreCase(Config.CLERK_PASSWORD)) {
-			output.setOutput("What can I do for you? Menu: Create Course/Student, Delete Course/Student, Cancel Course, Dean's List.");
+			//Config.clerkID++;
+			output.setOutput("Welcome Clerk no." + Config.clerkID + "\nWhat can I do for you? Menu: Create Course/Student, Delete Course/Student, Cancel Course, Dean's List.");
 			output.setState(CLERK);
 		} else {
 			output.setOutput("Wrong password! Please input the password:");
@@ -83,9 +83,9 @@ public class OutputHandler {
 		strArray = input.split(",");
 		boolean result = true;
 		
-		long current = System.currentTimeMillis();
-		int a = (int) ((current - StartServer.start) / (Config.SIMULATED_DAY) - Config.OVERDUE);
-		int b = (int) ((current - StartServer.start) / (Config.SIMULATED_DAY) - Config.TERM_LASTS);
+//		long current = System.currentTimeMillis();
+	//	int a = (int) ((current - StartServer.start) / (Config.SIMULATED_DAY) - Config.OVERDUE);
+		//int b = (int) ((current - StartServer.start) / (Config.SIMULATED_DAY) - Config.TERM_LASTS);
 		
 		if (Config.TERM_ENDS) {
 			output.setOutput("Term ends!");
@@ -173,9 +173,9 @@ public class OutputHandler {
 		strArray = input.split(",");
 		boolean result = true;
 		
-		long current = System.currentTimeMillis();
-		int a = (int) ((current - StartServer.start) / (Config.SIMULATED_DAY) - Config.OVERDUE);
-		int b = (int) ((current - StartServer.start) / (Config.SIMULATED_DAY) - Config.TERM_LASTS);
+	//	long current = System.currentTimeMillis();
+	//	int a = (int) ((current - StartServer.start) / (Config.SIMULATED_DAY) - Config.OVERDUE);
+	//	int b = (int) ((current - StartServer.start) / (Config.SIMULATED_DAY) - Config.TERM_LASTS);
 		
 		if (Config.TERM_ENDS) {
 			output.setOutput("Term ends!");
@@ -231,7 +231,7 @@ public class OutputHandler {
 		boolean result = true;
 		
 		long current = System.currentTimeMillis();
-		int b = (int) ((current - StartServer.start) / (Config.SIMULATED_DAY) - Config.TERM_LASTS);
+	//	int b = (int) ((current - StartServer.start) / (Config.SIMULATED_DAY) - Config.TERM_LASTS);
 		
 		if (Config.TERM_ENDS) {
 			output.setOutput("Term ends!");
@@ -276,7 +276,7 @@ public class OutputHandler {
 		boolean result = true;
 		
 		long current = System.currentTimeMillis();
-		int b = (int) ((current - StartServer.start) / (Config.SIMULATED_DAY) - Config.TERM_LASTS);
+	//	int b = (int) ((current - StartServer.start) / (Config.SIMULATED_DAY) - Config.TERM_LASTS);
 		
 		if (Config.TERM_ENDS) {
 			output.setOutput("Term ends!");
@@ -319,7 +319,7 @@ public class OutputHandler {
 		boolean result = true;
 		
 		long current = System.currentTimeMillis();
-		int b = (int) ((current - StartServer.start) / (Config.SIMULATED_DAY) - Config.TERM_LASTS);
+	//	int b = (int) ((current - StartServer.start) / (Config.SIMULATED_DAY) - Config.TERM_LASTS);
 		
 		if (Config.TERM_ENDS) {
 			output.setOutput("Term ends!");
@@ -362,7 +362,7 @@ public class OutputHandler {
 		boolean result = true;
 		
 		long current = System.currentTimeMillis();
-		int b = (int) ((current - StartServer.start) / (Config.SIMULATED_DAY) - Config.TERM_LASTS);
+	//	int b = (int) ((current - StartServer.start) / (Config.SIMULATED_DAY) - Config.TERM_LASTS);
 		
 		if (Config.TERM_ENDS) {
 			output.setOutput("Term ends!");
@@ -405,8 +405,8 @@ public class OutputHandler {
 		boolean result = true;
 		
 		long current = System.currentTimeMillis();
-		int a = (int) ((current - StartServer.start) / (Config.SIMULATED_DAY) - Config.OVERDUE);
-		int b = (int) ((current - StartServer.start) / (Config.SIMULATED_DAY) - Config.TERM_LASTS);
+	//	int a = (int) ((current - StartServer.start) / (Config.SIMULATED_DAY) - Config.OVERDUE);
+	//	int b = (int) ((current - StartServer.start) / (Config.SIMULATED_DAY) - Config.TERM_LASTS);
 		
 		if (Config.TERM_ENDS) {
 			output.setOutput("Term ends!");
@@ -457,13 +457,13 @@ public class OutputHandler {
 		boolean result = true;
 		
 		long current = System.currentTimeMillis();
-		int b = (int) ((current - StartServer.start) / (Config.SIMULATED_DAY) - Config.TERM_LASTS);
+	//	int b = (int) ((current - StartServer.start) / (Config.SIMULATED_DAY) - Config.TERM_LASTS);
 		
 		if (Config.TERM_ENDS) {
 			output.setOutput("Term ends!");
 			output.setState(STUDENT);
-		} else if (!Config.REGISTRATION_STARTS) {
-			output.setOutput("Course cannot be dropped before registration starts!");
+		} else if (!Config.REGISTRATION_ENDS) {
+			output.setOutput("Course cannot be dropped before registration ends!");
 			output.setState(STUDENT);
 		} else if (input.replace(" ", "").equalsIgnoreCase("") || !isNum.matches()) {
 			output.setOutput("Your input should be in correct format.");
@@ -547,7 +547,7 @@ public class OutputHandler {
 		Output output = new Output("", 0);
 		
 		long current = System.currentTimeMillis();
-		int b = (int) ((current - StartServer.start) / (Config.SIMULATED_DAY) - Config.TERM_LASTS);
+	//	int b = (int) ((current - StartServer.start) / (Config.SIMULATED_DAY) - Config.TERM_LASTS);
 		
 		if (!Config.TERM_ENDS) {
 			output.setOutput("Dean's list not generated!");
