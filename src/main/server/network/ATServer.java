@@ -25,7 +25,6 @@ public class ATServer implements Runnable {
 	private Logger logger = Trace.getInstance().getLogger(this);
 	InputHandler handler=new InputHandler();
 	private List<Client> clientList=new ArrayList<Client>();
-	
 	public ATServer(int port) {
 		
 		try {
@@ -113,6 +112,7 @@ public class ATServer implements Runnable {
 			ServerOutput so;
 			String output;
 			if(exist(from)){
+				//System.out.println("LOL");
 				int state=clientState(from);
 				so=handler.processInput(input,state);
 				output=so.getOutput()+"\n";
@@ -122,7 +122,6 @@ public class ATServer implements Runnable {
 			}else{
 				Config.clerkID++;
 				Client client=new Client(from,InputHandler.WAITING);
-				System.out.println("LOL");
 				clientList.add(client);
 				so=handler.processInput(input,InputHandler.WAITING);
 				output=so.getOutput()+"\n";

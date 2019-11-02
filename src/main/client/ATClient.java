@@ -23,7 +23,7 @@ public class ATClient implements Runnable {
 	private BufferedReader streamIn  = null;
 	private BufferedWriter streamOut = null;
 	private Logger logger = Trace.getInstance().getLogger(this);
-	
+	private int countC1=0;
 	public ATClient (String serverName, int serverPort) {
 		System.out.println("Connecting to the server. Please wait ...");
 		try {  
@@ -45,7 +45,28 @@ public class ATClient implements Runnable {
 			System.out.println("Fail to connect to the server,please try later!");
 	   }
 	}
-	
+	public ATClient (String serverName, int serverPort,String s) {
+		Config.testC1=true;
+		System.out.println("Connecting to the server. Please wait ...");
+		try {  
+			this.socket = new Socket(serverName, serverPort);
+			this.ID = socket.getLocalPort();
+			logger.info(String.format("%d : Connected to server: %s", ID,socket.getInetAddress()));
+			logger.info(String.format("%d : Connected to portid: %s", ID,socket.getLocalPort()));
+	    	this.start();
+	    	System.out.println("Welcome To Academic Tracking System!");
+	    	System.out.println("Greeting To Start!");
+		} catch(UnknownHostException uhe) {  
+			System.err.println(ID + ": Unknown Host");
+			String message = String.format("Exception thrown : %s \n", uhe.getMessage());
+			logger.info(String.format ("Class: %-12s: %s",this.getClass().getSimpleName(), message));
+		} catch(IOException ioe) {  
+			System.out.println(ID + ": Unexpected exception");
+			String message = String.format("Exception thrown : %s \n", ioe.getMessage());
+			logger.info(String.format ("Class: %-12s: %s",this.getClass().getSimpleName(), message));
+			System.out.println("Fail to connect to the server,please try later!");
+	   }
+	}
 	public int getID () {
 		return this.ID;
 	}
@@ -74,7 +95,24 @@ public class ATClient implements Runnable {
 			try {
 				if (streamOut != null) {
 					streamOut.flush();
+					if (Config.testC1==false) {
 					streamOut.write(console.readLine() + "\n");
+					}
+					else {
+						if (countC1==0) {
+					streamOut.write("\n");
+					//System.out.println("");
+						}
+						if (countC1==1) {
+					streamOut.write("clerk" + "\n");
+					//System.out.println("Clerk");
+						}
+						if (countC1==2) {
+					streamOut.write("admin" + "\n");
+					//System.out.println("admin");
+						}
+						countC1++;
+					}
 				} else {
 					System.out.println(ID + ": Stream Closed");
 				}

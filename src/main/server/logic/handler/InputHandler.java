@@ -8,6 +8,7 @@ import main.server.logic.handler.model.ServerOutput;
 import main.server.logic.model.Course;
 import main.server.logic.model.Student;
 import main.server.logic.model.University;
+import main.utilities.Config;
 
 public class InputHandler {
 
@@ -35,12 +36,18 @@ public class InputHandler {
 		ServerOutput oo = new ServerOutput(output, o.getState());
 		if (state == WAITING) {
 			output = "Who Are you? Clerk or Student?";
+			if (Config.testMode==true) {
+				output = "Who Are you? Clerk or Student?" + "\nClerk";
+				}
 			state = FINISHWAITING;
 			oo.setOutput(output);
 			oo.setState(state);
 		} else if (state == FINISHWAITING) {
 			if (input.equalsIgnoreCase("clerk")) {
 				output = "Please Input The Password:";
+				if (Config.testMode==true) {
+					output = "Please Input The Password:" + "\nadmin";
+					}
 				state = CLERKLOGIN;
 				oo.setOutput(output);
 				oo.setState(state);
@@ -51,6 +58,9 @@ public class InputHandler {
 				oo.setState(state);
 			} else {
 				output = "Who Are you? Clerk or Student?";
+				if (Config.testMode==true) {
+					output = "Who Are you? Clerk or Student?" + "\nClerk";
+					}
 				state = FINISHWAITING;
 				oo.setOutput(output);
 				oo.setState(state);
