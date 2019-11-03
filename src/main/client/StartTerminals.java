@@ -9,7 +9,7 @@ public class StartTerminals {
 		new ATClient(Config.DEFAULT_HOST, Config.DEFAULT_PORT);
 		}
 		else {
-			new ATClient(Config.DEFAULT_HOST, Config.DEFAULT_PORT, "test");	
+			new ATClient(Config.DEFAULT_HOST, Config.DEFAULT_PORT, args[0]);	
 		}
 
 	}

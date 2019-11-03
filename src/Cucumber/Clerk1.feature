@@ -5,7 +5,7 @@ Feature: Clerk1
 
   @tag1
   Scenario: Clerk1
-    Given I want to test a clerk
+    Given I want to test a clerk logging in and out
 		Then Run the Clerk1 on test mode
 
 

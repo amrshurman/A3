@@ -27,11 +27,21 @@ public class OutputHandler {
 	public static final int REGISTERFORCOURSE = 12;
 	public static final int DROPCOURSE = 13;
 	public static final int DEREGISTERCOURSE = 14;
+	private int clerk=0;
 	public Output clerkLogin(String input) {
 		Output output = new Output("", 0);
-		if (input.equalsIgnoreCase(Config.CLERK_PASSWORD)) {
+		if (input.equalsIgnoreCase(Config.CLERK_PASSWORD)) {//System.out.println(input + Config.clerkID);
 			//Config.clerkID++;
 			output.setOutput("Welcome Clerk no." + Config.clerkID + "\nWhat can I do for you? Menu: Create Course/Student, Delete Course/Student, Cancel Course, Dean's List.");
+			if (Config.testMode==true && clerk==1 && Config.clerkID==2) {
+				output.setOutput("Welcome Clerk no." + Config.clerkID + "\nWhat can I do for you? Menu: Create Course/Student, Delete Course/Student, Cancel Course, Dean's List. \nCreate Student");
+			}
+			if (Config.testMode==true && clerk==2 && Config.clerkID==2) {
+				output.setOutput("Welcome Clerk no." + Config.clerkID + "\nWhat can I do for you? Menu: Create Course/Student, Delete Course/Student, Cancel Course, Dean's List. \nDelete Student");
+			}
+			if (Config.testMode==true) {
+				clerk++;
+			}
 			output.setState(CLERK);
 		} else {
 			output.setOutput("Wrong password! Please input the password:");
@@ -93,6 +103,7 @@ public class OutputHandler {
 		} else if (!Config.REGISTRATION_STARTS) {
 			if (strArray.length != 8) {
 				output.setOutput("Your input should be in this format: 'title, course code, capsize, enforce prereqs(y/n), number of midterms, number of assignments, has a final(y/n), is project course(y/n)'");
+				
 				output.setState(CREATECOURSE);
 			} else {
 				String title = strArray[0].trim();

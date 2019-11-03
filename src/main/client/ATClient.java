@@ -14,80 +14,92 @@ import main.utilities.Trace;
 import org.apache.log4j.Logger;
 
 public class ATClient implements Runnable {
-	
+
 	private int ID = 0;
-	private Socket socket            = null;
-	private Thread thread            = null;
-	private ClientThread   client    = null;
-	private BufferedReader console   = null;
-	private BufferedReader streamIn  = null;
+	private Socket socket = null;
+	private Thread thread = null;
+	private ClientThread client = null;
+	private BufferedReader console = null;
+	private BufferedReader streamIn = null;
 	private BufferedWriter streamOut = null;
 	private Logger logger = Trace.getInstance().getLogger(this);
-	private int countC1=0;
-	public ATClient (String serverName, int serverPort) {
+	private int countC1 = 0;
+	private int countC2 = 0;
+	private int countC3 = 0;
+	private int countS1 = 0;
+	private int countS2 = 0;
+	private int countS3 = 0;
+	private int countS4 = 0;
+	private int countS5 = 0;
+	String type = "";
+
+	public ATClient(String serverName, int serverPort) {
 		System.out.println("Connecting to the server. Please wait ...");
-		try {  
+		try {
 			this.socket = new Socket(serverName, serverPort);
 			this.ID = socket.getLocalPort();
-			logger.info(String.format("%d : Connected to server: %s", ID,socket.getInetAddress()));
-			logger.info(String.format("%d : Connected to portid: %s", ID,socket.getLocalPort()));
-	    	this.start();
-	    	System.out.println("Welcome To Academic Tracking System!");
-	    	System.out.println("Greeting To Start!");
-		} catch(UnknownHostException uhe) {  
+			logger.info(String.format("%d : Connected to server: %s", ID, socket.getInetAddress()));
+			logger.info(String.format("%d : Connected to portid: %s", ID, socket.getLocalPort()));
+			this.start();
+			System.out.println("Welcome To Academic Tracking System!");
+			System.out.println("Greeting To Start!");
+		} catch (UnknownHostException uhe) {
 			System.err.println(ID + ": Unknown Host");
 			String message = String.format("Exception thrown : %s \n", uhe.getMessage());
-			logger.info(String.format ("Class: %-12s: %s",this.getClass().getSimpleName(), message));
-		} catch(IOException ioe) {  
+			logger.info(String.format("Class: %-12s: %s", this.getClass().getSimpleName(), message));
+		} catch (IOException ioe) {
 			System.out.println(ID + ": Unexpected exception");
 			String message = String.format("Exception thrown : %s \n", ioe.getMessage());
-			logger.info(String.format ("Class: %-12s: %s",this.getClass().getSimpleName(), message));
+			logger.info(String.format("Class: %-12s: %s", this.getClass().getSimpleName(), message));
 			System.out.println("Fail to connect to the server,please try later!");
-	   }
-	}
-	public ATClient (String serverName, int serverPort,String s) {
-		Config.testC1=true;
-		System.out.println("Connecting to the server. Please wait ...");
-		try {  
-			this.socket = new Socket(serverName, serverPort);
-			this.ID = socket.getLocalPort();
-			logger.info(String.format("%d : Connected to server: %s", ID,socket.getInetAddress()));
-			logger.info(String.format("%d : Connected to portid: %s", ID,socket.getLocalPort()));
-	    	this.start();
-	    	System.out.println("Welcome To Academic Tracking System!");
-	    	System.out.println("Greeting To Start!");
-		} catch(UnknownHostException uhe) {  
-			System.err.println(ID + ": Unknown Host");
-			String message = String.format("Exception thrown : %s \n", uhe.getMessage());
-			logger.info(String.format ("Class: %-12s: %s",this.getClass().getSimpleName(), message));
-		} catch(IOException ioe) {  
-			System.out.println(ID + ": Unexpected exception");
-			String message = String.format("Exception thrown : %s \n", ioe.getMessage());
-			logger.info(String.format ("Class: %-12s: %s",this.getClass().getSimpleName(), message));
-			System.out.println("Fail to connect to the server,please try later!");
-	   }
-	while (true) {
-			
 		}
 	}
-	public int getID () {
+
+	public ATClient(String serverName, int serverPort, String s) {
+		Config.testC1 = true;
+		type = s;
+		System.out.println("Connecting to the server. Please wait ...");
+		try {
+			this.socket = new Socket(serverName, serverPort);
+			this.ID = socket.getLocalPort();
+			logger.info(String.format("%d : Connected to server: %s", ID, socket.getInetAddress()));
+			logger.info(String.format("%d : Connected to portid: %s", ID, socket.getLocalPort()));
+			this.start();
+			System.out.println("Welcome To Academic Tracking System!");
+			System.out.println("Greeting To Start!");
+		} catch (UnknownHostException uhe) {
+			System.err.println(ID + ": Unknown Host");
+			String message = String.format("Exception thrown : %s \n", uhe.getMessage());
+			logger.info(String.format("Class: %-12s: %s", this.getClass().getSimpleName(), message));
+		} catch (IOException ioe) {
+			System.out.println(ID + ": Unexpected exception");
+			String message = String.format("Exception thrown : %s \n", ioe.getMessage());
+			logger.info(String.format("Class: %-12s: %s", this.getClass().getSimpleName(), message));
+			System.out.println("Fail to connect to the server,please try later!");
+		}
+		while (true) {
+
+		}
+	}
+
+	public int getID() {
 		return this.ID;
 	}
-	
-	public void start() throws IOException { 
+
+	public void start() throws IOException {
 		try {
-			console	= new BufferedReader(new InputStreamReader(System.in));
-			streamIn	= new BufferedReader(new InputStreamReader(socket.getInputStream()));
+			console = new BufferedReader(new InputStreamReader(System.in));
+			streamIn = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 			streamOut = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
-			
-			if (thread == null) {  
+
+			if (thread == null) {
 				client = new ClientThread(this, socket);
 				thread = new Thread(this);
 				thread.start();
 			}
 		} catch (IOException ioe) {
 			String message = String.format("Exception thrown : %s \n", ioe.getMessage());
-			logger.info(String.format ("Class: %-12s: %s",this.getClass().getSimpleName(), message));
+			logger.info(String.format("Class: %-12s: %s", this.getClass().getSimpleName(), message));
 			throw ioe;
 		}
 	}
@@ -98,45 +110,144 @@ public class ATClient implements Runnable {
 			try {
 				if (streamOut != null) {
 					streamOut.flush();
-					if (Config.testC1==false) {
-					streamOut.write(console.readLine() + "\n");
-					}
-					else {
-						if (countC1==0) {
-					streamOut.write("\n");
-					//System.out.println("");
+					if (Config.testC1 == false) {
+						streamOut.write(console.readLine() + "\n");
+					} else {
+						if (type.equals("1")) {
+							if (countC1 == 0) {
+								streamOut.write("\n");
+								// System.out.println("");
+							}
+							if (countC1 == 1) {
+								streamOut.write("clerk" + "\n");
+								// System.out.println("Clerk");
+							}
+							if (countC1 == 2) {
+								streamOut.write("admin" + "\n");
+								// System.out.println("admin");
+							}
+							if (countC1 == 3) {
+								streamOut.write("log out" + "\n");
+								// System.out.println("admin");
+							}
+							if (countC1 == 4) {
+								streamOut.write("Exit" + "\n");
+							}
+							countC1++;
 						}
-						if (countC1==1) {
-					streamOut.write("clerk" + "\n");
-					//System.out.println("Clerk");
+						if (type.equals("2")) {
+							Config.testC2=true;
+							if (countC2 == 0) {
+								streamOut.write("\n");
+							}
+							if (countC2 == 1) {
+								streamOut.write("clerk" + "\n");
+							}
+							if (countC2 == 2) {
+								streamOut.write("admin" + "\n");
+							}
+							if (countC2 == 3) {
+								streamOut.write("create student" + "\n");
+							}
+							if (countC2 == 4) {
+								streamOut.write("100996742, Amr, y" + "\n");
+							}
+							if (countC2 == 5) {
+								streamOut.write("Delete student" + "\n");
+							}
+							if (countC2 == 6) {
+								streamOut.write("100996742" + "\n");
+							}
+							if (countC2 == 7) {
+								streamOut.write("" + "\n");
+							}
+							if (countC2 == 8) {
+								streamOut.write("Create Course" + "\n");
+							}
+							if (countC2 == 9) {
+								streamOut.write("Testing, 123456, 2, y, 0, 4, n, n" + "\n");
+							}
+							if (countC2 == 10) {
+								streamOut.write("" + "\n");
+							}
+							if (countC2 == 11) {
+								streamOut.write("Delete Course" + "\n");
+							}
+							if (countC2 == 11) {
+								streamOut.write("123456" + "\n");
+							}
+							if (countC2 == 12) {
+								streamOut.write("Exit" + "\n");
+							}
+							countC2++;
 						}
-						if (countC1==2) {
-					streamOut.write("admin" + "\n");
-					//System.out.println("admin");
+						if (type.equals("3")) {
+							Config.testC3=true;
+							if (countC3 == 0) {
+								streamOut.write("\n");
+							}
+							if (countC3 == 1) {
+								streamOut.write("clerk" + "\n");
+							}
+							if (countC3 == 2) {
+								streamOut.write("admin" + "\n");
+							}
+							if (countC3 == 3) {
+								streamOut.write("Create Course" + "\n");
+							}
+							if (countC3 == 4) {
+								streamOut.write("3004, 456789, 1, y, 1, 2, y, y" + "\n");
+							}
+							if (countC3 == 5) {
+								streamOut.write("");
+							}
+							if (countC3 == 6) {
+								streamOut.write("Create student" + "\n");
+							}
+							if (countC3 == 7) {
+								streamOut.write("111111111, Joe, y" + "\n");
+							}
+							if (countC3 == 8) {
+								streamOut.write("Exit" + "\n");
+							}
+							countC3++;
 						}
-						if (countC1==3) {
-							streamOut.write("log out" + "\n");
-							//System.out.println("admin");
-								}
-						countC1++;
+						if (type.equals("4")) {
+							if (countS1 == 0) {
+								streamOut.write("\n");
+							}
+							if (countS1 == 1) {
+								streamOut.write("Student" + "\n");
+							}
+							if (countS1 == 2) {
+								streamOut.write("111111111, Joe" + "\n");
+							}
+							if (countS1 == 3) {
+								streamOut.write("log out" + "\n");
+							}
+							if (countS1 == 4) {
+								streamOut.write("Exit" + "\n");
+							}
+							countS1++;
+						}
 					}
 				} else {
 					System.out.println(ID + ": Stream Closed");
 				}
 			} catch (IOException e) {
-				String message = String.format("Exception thrown : %s \n",
-						e.getMessage());
-				logger.info(String.format("Class: %-12s: %s", this.getClass()
-						.getSimpleName(), message));
+				String message = String.format("Exception thrown : %s \n", e.getMessage());
+				logger.info(String.format("Class: %-12s: %s", this.getClass().getSimpleName(), message));
 				stop();
 			}
 		}
-		
+
 	}
 
 	public void handle(String msg) {
 		if (msg.equalsIgnoreCase("Exit")) {
+			System.out.println("Exit");
 			System.out.println("Good bye.");
+			System.exit(1);
 			stop();
 		} else {
 			System.out.println(msg);
@@ -161,10 +272,8 @@ public class ATClient implements Runnable {
 			this.streamIn = null;
 			this.streamOut = null;
 		} catch (IOException ioe) {
-			String message = String.format("Exception thrown : %s \n",
-					ioe.getMessage());
-			logger.info(String.format("Class: %-12s: %s", this.getClass()
-					.getSimpleName(), message));
+			String message = String.format("Exception thrown : %s \n", ioe.getMessage());
+			logger.info(String.format("Class: %-12s: %s", this.getClass().getSimpleName(), message));
 		}
 		client.close();
 	}

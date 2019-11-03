@@ -13,7 +13,7 @@ public class StartServer {
 		}
 		else {
 			System.out.println("Starting server on test mode...");
-			new ATServer(Config.DEFAULT_PORT, "test");
+			new ATServer(Config.DEFAULT_PORT, args[0]);
 		}
 
 	}
