@@ -28,6 +28,7 @@ public class OutputHandler {
 	public static final int DROPCOURSE = 13;
 	public static final int DEREGISTERCOURSE = 14;
 	private int clerk=0;
+	private int cocount=0;
 	public Output clerkLogin(String input) {
 		Output output = new Output("", 0);
 		if (input.equalsIgnoreCase(Config.CLERK_PASSWORD)) {//System.out.println(input + Config.clerkID);
@@ -75,6 +76,15 @@ public class OutputHandler {
 						Integer.parseInt(number), name);
 				if (result) {
 					output.setOutput("What can I do for you? Menu: Select Course, Register for Course, Drop Course, Deregister Course.");
+					if (Config.testMode == true) {
+						if (cocount == 1) {
+							output.setOutput("What can I do for you? Menu: Select Course, Register for Course, Drop Course, Deregister Course."+ "\nSelect Course");
+						}
+						//else {
+							//output.setOutput("What can I do for you? Menu: Select Course, Register for Course, Drop Course, Deregister Course."+ "\nRegister for course");
+						//}//System.out.println(cocount);
+						cocount++;
+					}
 					University.getInstance().setCurrentstudent(
 							Integer.parseInt(number));
 					output.setState(STUDENT);

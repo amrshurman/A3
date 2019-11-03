@@ -116,7 +116,7 @@ public class University implements UniversityInt {
 					System.out.println("registration ends");
 					// System.out.println(Config.SIMULATED_DAY);
 				}
-			}, (7500));// System.out.println("test");
+			}, (10000));// System.out.println("test");
 			timer_termends.schedule(new TimerTask() {
 
 				@Override
@@ -128,7 +128,7 @@ public class University implements UniversityInt {
 					}
 					System.out.println("term ends");
 				}
-			}, (10000));
+			}, (15000));
 		}
 	}
 

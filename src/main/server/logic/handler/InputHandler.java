@@ -27,8 +27,10 @@ public class InputHandler {
 	public static final int REGISTERFORCOURSE = 12;
 	public static final int DROPCOURSE = 13;
 	public static final int DEREGISTERCOURSE = 14;
-	private int ccount=0;
-	//private boolean switchAcc=false;
+	private int ccount = 0;
+	private int cocount = 0;
+	private int scount = 0;
+	// private boolean switchAcc=false;
 	OutputHandler outputHandler = new OutputHandler();
 
 	public ServerOutput processInput(String input, int state) {
@@ -37,38 +39,44 @@ public class InputHandler {
 		ServerOutput oo = new ServerOutput(output, o.getState());
 		if (state == WAITING) {
 			output = "Who Are you? Clerk or Student?";
-			
+
 			state = FINISHWAITING;
 			oo.setOutput(output);
 			oo.setState(state);
 		} else if (state == FINISHWAITING) {
 			if (input.equalsIgnoreCase("clerk")) {
-				if (Config.testMode==true ) {
-				output+="Clerk";
+				if (Config.testMode == true) {
+					output += "Clerk";
 				}
 				output += "\nPlease Input The Password:";
-				if (Config.testMode==true) {
+				if (Config.testMode == true) {
 					output += "\nadmin";
-					}
+				}
 				state = CLERKLOGIN;
 				oo.setOutput(output);
 				oo.setState(state);
 			} else if (input.equalsIgnoreCase("student")) {
-				if (Config.testMode==true ) {
-				output += "Student";
+				if (Config.testMode == true) {
+					output += "Student";
 				}
-				output += "\nPlease Input Studentnumber and Name: 'student number, name'";
-				if (Config.testMode==true ) {
-					output += "\n111111111, Joe";
+				output += "\nPlease Input Student number and Name: 'student number, name'";
+				if (Config.testMode == true) {
+					if (scount == 0) {
+						output += "\n111111111, Joe";
 					}
+					if (scount == 1) {
+						output += "\n222222222, Will";
+					}
+					scount++;
+				}
 				state = STUDENTLOGIN;
 				oo.setOutput(output);
 				oo.setState(state);
 			} else {
 				output = "Who Are you? Clerk or Student?";
-				if (Config.testMode==true) {
+				if (Config.testMode == true) {
 					output = "Who Are you? Clerk or Student?" + "\nClerk";
-					}
+				}
 				state = FINISHWAITING;
 				oo.setOutput(output);
 				oo.setState(state);
@@ -87,68 +95,60 @@ public class InputHandler {
 			oo.setState(state);
 		} else if (state == CLERK) {
 			if (input.equalsIgnoreCase("create course")) {
-				output+= "Create Course \n";
+				output += "Create Course \n";
 				output += "Please Input Course Info: 'title, course code, capsize, enforce prereqs(y/n), number of midterms, number of assignments, has a final(y/n), is project course(y/n)'";
-				if (Config.testMode==true) {
-					if (ccount==0) {
-					output += "\nTesting, 123456, 2, y, 0, 4, n, n";
+				if (Config.testMode == true) {
+					if (ccount == 0) {
+						output += "\nTesting, 123456, 2, y, 0, 4, n, n";
 					}
-					if (ccount==1) {
+					if (ccount == 1) {
 						output += "\n3004, 456789, 1, y, 1, 2, y, y";
 					}
 					ccount++;
-					}
-				
+				}
+
 				state = CREATECOURSE;
 				oo.setOutput(output);
 				oo.setState(state);
 			} else if (input.equalsIgnoreCase("create student")) {
 				output = "Please Input Student Info: 'student number, name, is fulltime(y/n)'";
 				state = CREATESTUDENT;
-				if (Config.testMode==true) {
-					output = "Please Input Student Info: 'student number, name, is fulltime(y/n)'" + "\n100996742, Amr, y";
-					}
+				if (Config.testMode == true) {
+					output = "Please Input Student Info: 'student number, name, is fulltime(y/n)'"
+							+ "\n100996742, Amr, y";
+				}
 				oo.setOutput(output);
 				oo.setState(state);
 			} else if (input.equalsIgnoreCase("cancel course")) {
 				output = "Please Input Course Info: 'course code'\nAvailable Course List: ";
 				for (int i = 0; i < University.getInstance().Courses().size(); i++) {
-					output = output
-							+ "\n"
-							+ University.getInstance().Courses().get(i)
-									.toString();
+					output = output + "\n" + University.getInstance().Courses().get(i).toString();
 				}
 				state = CANCELCOURSE;
 				oo.setOutput(output);
 				oo.setState(state);
 			} else if (input.equalsIgnoreCase("delete course")) {
-				output+= "Delete Course \n";
+				output += "Delete Course \n";
 				output += "Please Input Course Info: 'course code'\nAvailable Course List: ";
 				for (int i = 0; i < University.getInstance().Courses().size(); i++) {
-					output = output
-							+ "\n"
-							+ University.getInstance().Courses().get(i)
-									.toString();
+					output = output + "\n" + University.getInstance().Courses().get(i).toString();
 				}
-				if (Config.testMode==true) {
-					output  += "\n123456";
-					}
+				if (Config.testMode == true) {
+					output += "\n123456";
+				}
 				state = DELETECOURSE;
 				oo.setOutput(output);
 				oo.setState(state);
 			} else if (input.equalsIgnoreCase("delete student")) {
-				output+="What can I do for you? Menu: Create Course/Student, Delete Course/Student, Cancel Course, Dean's List.";
-				output+="\nDelete Student";
+				output += "What can I do for you? Menu: Create Course/Student, Delete Course/Student, Cancel Course, Dean's List.";
+				output += "\nDelete Student";
 				output += "\nPlease Input Student Info: 'student number'\nAvailable Student List: ";
 				for (int i = 0; i < University.getInstance().Students().size(); i++) {
-					output = output
-							+ "\n"
-							+ University.getInstance().Students().get(i)
-									.toString();
+					output = output + "\n" + University.getInstance().Students().get(i).toString();
 				}
-				if (Config.testMode==true) {
+				if (Config.testMode == true) {
 					output += "\n100996742";
-					}
+				}
 				state = DELETESTUDENT;
 				oo.setOutput(output);
 				oo.setState(state);
@@ -160,9 +160,9 @@ public class InputHandler {
 				oo.setState(state);
 			} else if (input.equalsIgnoreCase("log out")) {
 				output = "Successfully Log Out!";
-				if (Config.testMode==true) {
+				if (Config.testMode == true) {
 					output = "log out" + "\nSuccessfully Log Out!";
-					}
+				}
 				state = WAITING;
 				oo.setOutput(output);
 				oo.setState(state);
@@ -173,60 +173,58 @@ public class InputHandler {
 				oo.setState(state);
 			} else {
 				output = "Please select from the menu.Menu: Create Course/Student, Delete Course/Student, Cancel Course, Dean's List.";
-				
+
 				state = CLERK;
 				oo.setOutput(output);
 				oo.setState(state);
 			}
 		} else if (state == STUDENT) {
 			int studentnumber = University.getInstance().getCurrentstudent();
-			Student student = (Student) University.getInstance().GetStudent(
-					studentnumber);
+			Student student = (Student) University.getInstance().GetStudent(studentnumber);
 			if (input.equalsIgnoreCase("select course")) {
-				List<Course> availableCourses = new ArrayList<Course>(
-						University.getInstance().Courses());
-				List<Course> notavailableCourses = new ArrayList<Course>(
-						student.getSelectedCourses());
+				List<Course> availableCourses = new ArrayList<Course>(University.getInstance().Courses());
+				List<Course> notavailableCourses = new ArrayList<Course>(student.getSelectedCourses());
 				notavailableCourses.addAll(student.getRegisteredCourses());
 				notavailableCourses.addAll(student.getCompletedCourses());
 				availableCourses.removeAll(notavailableCourses);
 				if (availableCourses.size() > 0) {
 					output = "Please Input Course Info: 'course code'\nAvailable Course List: ";
 					for (int i = 0; i < availableCourses.size(); i++) {
-						output = output + "\n"
-								+ availableCourses.get(i).toString();
+						output = output + "\n" + availableCourses.get(i).toString();
 					}
 					state = SELECTCOURSE;
 				} else {
 					output = "No Available Courses!";
 					state = SELECTCOURSE;
+				}
+				if (Config.testMode == true) {
+					output+="\n456789";
 				}
 				oo.setOutput(output);
 				oo.setState(state);
 			} else if (input.equalsIgnoreCase("register for course")) {
-				List<Course> availableCourses = new ArrayList<Course>(
-						student.getSelectedCourses());
+				List<Course> availableCourses = new ArrayList<Course>(student.getSelectedCourses());
 				if (availableCourses.size() > 0) {
 					output = "Please Input Course Info: 'course code'\nAvailable Course List: ";
 					for (int i = 0; i < availableCourses.size(); i++) {
-						output = output + "\n"
-								+ availableCourses.get(i).toString();
+						output = output + "\n" + availableCourses.get(i).toString();
 					}
 					state = REGISTERFORCOURSE;
 				} else {
 					output = "No Available Courses!";
 					state = REGISTERFORCOURSE;
 				}
+				if (Config.testMode == true) {
+					output+="\n456789";
+				}
 				oo.setOutput(output);
 				oo.setState(state);
 			} else if (input.equalsIgnoreCase("drop course")) {
-				List<Course> availableCourses = new ArrayList<Course>(
-						student.getSelectedCourses());
+				List<Course> availableCourses = new ArrayList<Course>(student.getSelectedCourses());
 				if (availableCourses.size() > 0) {
 					output = "Please Input Course Info: 'course code'\nAvailable Course List: ";
 					for (int i = 0; i < availableCourses.size(); i++) {
-						output = output + "\n"
-								+ availableCourses.get(i).toString();
+						output = output + "\n" + availableCourses.get(i).toString();
 					}
 					state = DROPCOURSE;
 				} else {
@@ -236,36 +234,49 @@ public class InputHandler {
 				oo.setOutput(output);
 				oo.setState(state);
 			} else if (input.equalsIgnoreCase("deregister course")) {
-				List<Course> availableCourses = new ArrayList<Course>(
-						student.getRegisteredCourses());
+				List<Course> availableCourses = new ArrayList<Course>(student.getRegisteredCourses());
 				if (availableCourses.size() > 0) {
 					output = "Please Input Course Info: 'course code'\nAvailable Course List: ";
 					for (int i = 0; i < availableCourses.size(); i++) {
-						output = output + "\n"
-								+ availableCourses.get(i).toString();
+						output = output + "\n" + availableCourses.get(i).toString();
 					}
 					state = DEREGISTERCOURSE;
 				} else {
 					output = "No Available Courses!";
 					state = DEREGISTERCOURSE;
 				}
+				if (Config.testMode == true) {
+					output+="\n456789";
+				}
 				oo.setOutput(output);
 				oo.setState(state);
 			} else if (input.equalsIgnoreCase("log out")) {
-				if (Config.testMode==true) {
-					output  += "log out\n";
-					}
+				if (Config.testMode == true) {
+					output += "log out\n";
+				}
 				output += "Successfully Log Out!";
 				state = WAITING;
 				oo.setOutput(output);
 				oo.setState(state);
 			} else if (input.equalsIgnoreCase("main menu")) {
 				output = "What can I do for you? Menu: Select Course, Register for Course, Drop Course, Deregister Course.";
+				if (Config.testMode == true) {
+					if (cocount == 0) {
+						output += "\nSelect Course";
+					}
+					if (cocount == 1) {
+						output += "\nRegister for course";
+					}
+					cocount++;
+				}
 				state = STUDENT;
 				oo.setOutput(output);
 				oo.setState(state);
 			} else {
 				output = "Please select from the menu. Menu: Select Course, Register for Course, Drop Course, Deregister Course.";
+				if (Config.testMode == true) {
+					output += "\nRegister for course";
+				}
 				state = STUDENT;
 				oo.setOutput(output);
 				oo.setState(state);
@@ -368,6 +379,9 @@ public class InputHandler {
 				oo.setState(state);
 			} else if (input.equalsIgnoreCase("main menu")) {
 				output = "What can I do for you? Menu: Select Course, Register for Course, Drop Course, Deregister Course.";
+				if (Config.testMode == true) {
+					output += "\nRegister for course";
+				}
 				state = STUDENT;
 				oo.setOutput(output);
 				oo.setState(state);
@@ -386,6 +400,9 @@ public class InputHandler {
 				oo.setState(state);
 			} else if (input.equalsIgnoreCase("main menu")) {
 				output = "What can I do for you? Menu: Select Course, Register for Course, Drop Course, Deregister Course.";
+				if (Config.testMode == true) {
+					output += "\nRegister for course";
+				}
 				state = STUDENT;
 				oo.setOutput(output);
 				oo.setState(state);
@@ -404,6 +421,9 @@ public class InputHandler {
 				oo.setState(state);
 			} else if (input.equalsIgnoreCase("main menu")) {
 				output = "What can I do for you? Menu: Select Course, Register for Course, Drop Course, Deregister Course.";
+				if (Config.testMode == true) {
+					output += "\nRegister for course";
+				}
 				state = STUDENT;
 				oo.setOutput(output);
 				oo.setState(state);
@@ -422,6 +442,9 @@ public class InputHandler {
 				oo.setState(state);
 			} else if (input.equalsIgnoreCase("main menu")) {
 				output = "What can I do for you? Menu: Select Course, Register for Course, Drop Course, Deregister Course.";
+				if (Config.testMode == true) {
+					output += "\nRegister for course";
+				}
 				state = STUDENT;
 				oo.setOutput(output);
 				oo.setState(state);

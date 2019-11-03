@@ -208,6 +208,12 @@ public class ATClient implements Runnable {
 								streamOut.write("111111111, Joe, y" + "\n");
 							}
 							if (countC3 == 8) {
+								streamOut.write("Create student" + "\n");
+							}
+							if (countC3 == 9) {
+								streamOut.write("222222222, Will, y" + "\n");
+							}
+							if (countC3 == 10) {
 								streamOut.write("Exit" + "\n");
 							}
 							countC3++;
@@ -230,6 +236,39 @@ public class ATClient implements Runnable {
 							}
 							countS1++;
 						}
+						if (type.equals("5")) {
+							if (countS2 == 0) {
+								streamOut.write("\n");
+							}
+							if (countS2 == 1) {
+								streamOut.write("Student" + "\n");
+							}
+							if (countS2 == 2) {
+								streamOut.write("222222222, Will" + "\n");
+							}
+							if (countS2 == 3) {
+								streamOut.write("Select Course" + "\n");
+							}
+							if (countS2 == 4) {
+								streamOut.write("456789" + "\n");
+							}
+							if (countS2 == 5) {
+								streamOut.write("" + "\n");
+							}
+							if (countS2 == 6) {
+								streamOut.write("Register for Course" + "\n");
+							}
+							if (countS2 == 7) {
+								streamOut.write("456789" + "\n");
+							}
+							if (countS2 == 8) {
+								streamOut.write("log out" + "\n");
+							}
+							if (countS2 == 9) {
+								streamOut.write("Exit" + "\n");
+							}
+							countS2++;
+						}
 					}
 				} else {
 					System.out.println(ID + ": Stream Closed");
@@ -243,13 +282,14 @@ public class ATClient implements Runnable {
 
 	}
 
-	public void handle(String msg) {
+	public void handle(String msg) {//System.out.println(msg + "!");
 		if (msg.equalsIgnoreCase("Exit")) {
 			System.out.println("Exit");
 			System.out.println("Good bye.");
 			System.exit(1);
 			stop();
-		} else {
+		}
+		else {
 			System.out.println(msg);
 		}
 	}
