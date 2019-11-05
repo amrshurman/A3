@@ -76,15 +76,6 @@ public class OutputHandler {
 						Integer.parseInt(number), name);
 				if (result) {
 					output.setOutput("What can I do for you? Menu: Select Course, Register for Course, Drop Course, Deregister Course.");
-					if (Config.testMode == true) {
-						if (cocount == 1) {
-							output.setOutput("What can I do for you? Menu: Select Course, Register for Course, Drop Course, Deregister Course."+ "\nSelect Course");
-						}
-						//else {
-							//output.setOutput("What can I do for you? Menu: Select Course, Register for Course, Drop Course, Deregister Course."+ "\nRegister for course");
-						//}//System.out.println(cocount);
-						cocount++;
-					}
 					University.getInstance().setCurrentstudent(
 							Integer.parseInt(number));
 					output.setState(STUDENT);
@@ -384,11 +375,10 @@ public class OutputHandler {
 		
 		long current = System.currentTimeMillis();
 	//	int b = (int) ((current - StartServer.start) / (Config.SIMULATED_DAY) - Config.TERM_LASTS);
-		
 		if (Config.TERM_ENDS) {
 			output.setOutput("Term ends!");
 			output.setState(STUDENT);
-		} else if (Config.REGISTRATION_ENDS){
+		} else if (Config.REGISTRATION_ENDS){//System.out.println("LOL");
 			output.setOutput("Course cannot be selected after registration ends!");
 			output.setState(STUDENT);
 		} else if (input.replace(" ", "").equalsIgnoreCase("") || !isNum.matches()) {

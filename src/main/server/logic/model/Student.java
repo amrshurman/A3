@@ -159,16 +159,17 @@ public class Student implements StudentInt {
 	}
 
 	@Override
-	public boolean DropCourse(Course course) {
+	public boolean DropCourse(Course course) {//System.out.println(IsRegistered(course));System.out.println(IsCompleted(course));
 		// TODO Auto-generated method stub
 		boolean result = true;
-		if(!IsSelected(course)||IsRegistered(course)||IsCompleted(course)) {
+		if(!IsRegistered(course)||IsCompleted(course)) {System.out.println(!IsRegistered(course));
 			result = false;
 			logger.info(String.format("Student Operation: student %d drop course %d; State: Fail; Reason: student hasn't selected this course or student has completed this course", this.StudentNumber(), course.Code()));
-		} else {
-			result = this.selectedCourses.remove(course);
+		} else {//System.out.println(result);
+			result = this.selectedCourses.remove(course);//System.out.println(result);
+			result = this.registeredCourses.remove(course);//System.out.println(result);
 			logger.info(String.format("Student Operation: student %d drop course %d; State: Success", this.StudentNumber(), course.Code()));
-		}
+		}//System.out.println(result);
 		return result;
 	}
 
