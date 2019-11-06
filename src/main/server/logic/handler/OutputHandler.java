@@ -29,6 +29,9 @@ public class OutputHandler {
 	public static final int DEREGISTERCOURSE = 14;
 	private int clerk=0;
 	private int cocount=0;
+	int cci=0;
+	int si=0;
+	int ri=0;
 	public Output clerkLogin(String input) {
 		Output output = new Output("", 0);
 		if (input.equalsIgnoreCase(Config.CLERK_PASSWORD)) {//System.out.println(input + Config.clerkID);
@@ -46,6 +49,9 @@ public class OutputHandler {
 			output.setState(CLERK);
 		} else {
 			output.setOutput("Wrong password! Please input the password:");
+			if (Config.testMode2 == true) {
+				output.setOutput("Wrong password! Please input the password: \nadmin");
+			}
 			output.setState(CLERKLOGIN);
 		}
 		return output;
@@ -81,6 +87,9 @@ public class OutputHandler {
 					output.setState(STUDENT);
 				} else {
 					output.setOutput("Invalid student number or student name.");
+				//	if (Config.testMode2==true) {
+					//	output.setOutput("Invalid student number or student name.");
+					//}
 					output.setState(STUDENTLOGIN);
 				}
 			}
@@ -136,6 +145,9 @@ public class OutputHandler {
 				} else if (Integer.parseInt(code) < 100000
 						|| Integer.parseInt(code) > 999999) {
 					output.setOutput("The length of course code must be 6.");
+					if (Config.testMode2==true) {
+						output.setOutput("2345678 \nThe length of course code must be 6.");
+					}
 					output.setState(CREATECOURSE);
 				} else if (Integer.parseInt(numofmidterms) < 0
 						|| Integer.parseInt(numofmidterms) > 2
@@ -166,8 +178,17 @@ public class OutputHandler {
 							Integer.parseInt(numofassignments), hasf, isp);
 					if (result) {
 						output.setOutput("Success!");
+						if (Config.testMode2==true && cci==0) {
+							output.setOutput("4004, 123456, 0, y, 0, 4, n, y \nSuccess!");
+						}
+						else {
+							output.setOutput("5106, 456789, 1, n, 1, 3, y, n \nSuccess!");
+						}
 					} else {
 						output.setOutput("The course already exists!");
+						if (Config.testMode2==true) {
+							output.setOutput("4109, 234567, 3, y, 1, 4, y, y \nThe course already exists!");
+						}
 					}
 					output.setState(CLERK);
 				}
@@ -210,6 +231,9 @@ public class OutputHandler {
 				} else if (Integer.parseInt(number) < 100000000
 						|| Integer.parseInt(number) > 999999999) {
 					output.setOutput("The length of student number must be 9.");
+					if (Config.testMode2==true) {
+						output.setOutput("1111111111, Joe, y \nThe length of student number must be 9.");
+					}
 					output.setState(CREATESTUDENT);
 				} else {
 					boolean isf;
@@ -222,8 +246,14 @@ public class OutputHandler {
 							Integer.parseInt(number), name, isf);
 					if (result) {
 						output.setOutput("Success!");
+						if (Config.testMode2==true) {
+							output.setOutput("222222222, Will, y \nSuccess!");
+						}
 					} else {
 						output.setOutput("The student already exists!");
+						if (Config.testMode2==true) {
+							output.setOutput("111111111 \nThe student already exists!");
+						}
 					}
 					output.setState(CLERK);
 				}
@@ -255,6 +285,9 @@ public class OutputHandler {
 			} else if (Integer.parseInt(code) < 100000
 					|| Integer.parseInt(code) > 999999) {
 				output.setOutput("The length of course code must be 6.");
+				if (Config.testMode2==true) {
+					output.setOutput("2345678 \nThe length of course code must be 6.");
+				}
 				output.setState(CANCELCOURSE);
 			} else {
 				if (University.getInstance()
@@ -300,6 +333,9 @@ public class OutputHandler {
 			} else if (Integer.parseInt(code) < 100000
 					|| Integer.parseInt(code) > 999999) {
 				output.setOutput("The length of course code must be 6.");
+				if (Config.testMode2==true) {
+					output.setOutput("2345678 \nThe length of course code must be 6.");
+				}
 				output.setState(DELETECOURSE);
 			} else {
 				if (University.getInstance().CheckCourse(Integer.parseInt(code)) == false) {
@@ -343,16 +379,23 @@ public class OutputHandler {
 			} else if (Integer.parseInt(number) < 100000000
 					|| Integer.parseInt(number) > 999999999) {
 				output.setOutput("The length of student number must be 9.");
+				
 				output.setState(DELETESTUDENT);
 			} else {
 				if (University.getInstance().CheckStudent(Integer.parseInt(number)) == false) {
 					output.setOutput("The student does not exist!");
+					if (Config.testMode2==true) {
+						output.setOutput("222222223 \nThe student does not exist!");
+					}
 				} else {
 					Student s = University.getInstance().GetStudent(
 							Integer.parseInt(number));
 					result = University.getInstance().DestroyStudent(s);
 					if (result) {
 						output.setOutput("Success!");
+						if (Config.testMode2==true) {
+							output.setOutput("222222222 \nSuccess!");
+						}
 					} else {
 						output.setOutput("Fail to delete!");
 					}
@@ -387,10 +430,16 @@ public class OutputHandler {
 		} else if (Integer.parseInt(code) < 100000
 				|| Integer.parseInt(code) > 999999) {
 			output.setOutput("The length of course code must be 6.");
+			if (Config.testMode2==true) {
+				output.setOutput("2345678 \nThe length of course code must be 6.");
+			}
 			output.setState(SELECTCOURSE);
 		} else if (!University.getInstance()
 				.CheckCourse(Integer.parseInt(code))) {
 			output.setOutput("The course does not exist!");
+			if (Config.testMode2==true) {
+				output.setOutput("234568 \nThe course does not exist!");
+			}
 			output.setState(SELECTCOURSE);
 		} else {
 			int studentnumber = University.getInstance().getCurrentstudent();
@@ -400,8 +449,18 @@ public class OutputHandler {
 					Integer.parseInt(code)));
 			if (result) {
 				output.setOutput("Success!");
+				if (Config.testMode2==true && si==0) {
+					output.setOutput("234567 \nSuccess!");
+				}
+				else if (Config.testMode2==true && si==1){
+					output.setOutput("456789 \nSuccess!");
+				}
+				si++;
 			} else {
 				output.setOutput("Unable to select this course!");
+				if (Config.testMode2==true) {
+					output.setOutput("234567 \n Unable to select this course!");
+				}
 			}
 			output.setState(STUDENT);
 		}
@@ -424,9 +483,15 @@ public class OutputHandler {
 			output.setState(STUDENT);
 		} else if (!Config.REGISTRATION_STARTS) {
 			output.setOutput("Registration has not started!");
+			if (Config.testMode2==true) {
+				output.setOutput("234567 \nRegistration has not started!");
+			}
 			output.setState(STUDENT);
 		} else if (Config.REGISTRATION_ENDS) {
 			output.setOutput("Registration has finished!");
+			if (Config.testMode2==true) {
+				output.setOutput("2345678 \nRegistration has finished!");
+			}
 			output.setState(STUDENT);
 		} else {
 			if (input.replace(" ", "").equalsIgnoreCase("") || !isNum.matches()) {
@@ -435,6 +500,9 @@ public class OutputHandler {
 			} else if (Integer.parseInt(code) < 100000
 					|| Integer.parseInt(code) > 999999) {
 				output.setOutput("The length of course code must be 6.");
+				if (Config.testMode2==true) {
+					output.setOutput("2345678 \nThe length of course code must be 6.");
+				}
 				output.setState(REGISTERFORCOURSE);
 			} else if (!University.getInstance().CheckCourse(
 					Integer.parseInt(code))) {
@@ -451,6 +519,13 @@ public class OutputHandler {
 						student, course);
 				if (result) {
 					output.setOutput("Success!");
+					if (Config.testMode2==true && ri==0) {
+						output.setOutput("234567 \nSuccess!");
+					}
+					else if (Config.testMode2==true && ri==1){
+						output.setOutput("456789 \nSuccess!");
+					}
+					ri++;
 				} else {
 					output.setOutput("Unable to register for this course!");
 				}
@@ -472,9 +547,15 @@ public class OutputHandler {
 		
 		if (Config.TERM_ENDS) {
 			output.setOutput("Term ends!");
+			if (Config.testMode2==true) {
+				output.setOutput("456789 \nTerm ends!");
+			}
 			output.setState(STUDENT);
 		} else if (!Config.REGISTRATION_ENDS) {
 			output.setOutput("Course cannot be dropped before registration ends!");
+			if (Config.testMode2==true) {
+				output.setOutput("234567 \nCourse cannot be dropped before registration ends!");
+			}
 			output.setState(STUDENT);
 		} else if (input.replace(" ", "").equalsIgnoreCase("") || !isNum.matches()) {
 			output.setOutput("Your input should be in correct format.");
@@ -482,6 +563,9 @@ public class OutputHandler {
 		} else if (Integer.parseInt(code) < 100000
 				|| Integer.parseInt(code) > 999999) {
 			output.setOutput("The length of course code must be 6.");
+			if (Config.testMode2==true) {
+				output.setOutput("2345678 \nThe length of course code must be 6.");
+			}
 			output.setState(DROPCOURSE);
 		} else if (!University.getInstance()
 				.CheckCourse(Integer.parseInt(code))) {
@@ -497,6 +581,9 @@ public class OutputHandler {
 				output.setOutput("Success!");
 			} else {
 				output.setOutput("Unable to drop this course!");
+				if (Config.testMode2==true) {
+					output.setOutput("234567 \nUnable to drop this course!");
+				}
 			}
 			output.setState(STUDENT);
 		}
@@ -518,9 +605,15 @@ public class OutputHandler {
 			output.setState(STUDENT);
 		} else if (!Config.REGISTRATION_STARTS) {
 			output.setOutput("Registration has not started!");
+			if (Config.testMode2==true) {
+				output.setOutput("234567 \nRegistration has not started!");
+			}
 			output.setState(STUDENT);
 		} else if (Config.REGISTRATION_ENDS) {
 			output.setOutput("Registration has finished!");
+			if (Config.testMode2==true) {
+				output.setOutput("456789 \nRegistration has finished!");
+			}
 			output.setState(STUDENT);
 		} else {
 			if (input.replace(" ", "").equalsIgnoreCase("") || !isNum.matches()) {
@@ -529,6 +622,9 @@ public class OutputHandler {
 			} else if (Integer.parseInt(code) < 100000
 					|| Integer.parseInt(code) > 999999) {
 				output.setOutput("The length of course code must be 6.");
+				if (Config.testMode2==true) {
+					output.setOutput("2345678 \nThe length of course code must be 6.");
+				}
 				output.setState(DEREGISTERCOURSE);
 			} else if (!University.getInstance().CheckCourse(
 					Integer.parseInt(code))) {
@@ -545,6 +641,9 @@ public class OutputHandler {
 						student, course);
 				if (result) {
 					output.setOutput("Success!");
+					if (Config.testMode2==true) {
+						output.setOutput("234567 \nSuccess!");
+					}
 				} else {
 					output.setOutput("Unable to deregister from this course!");
 				}

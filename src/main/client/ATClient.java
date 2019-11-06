@@ -30,7 +30,8 @@ public class ATClient implements Runnable {
 	private int countS2 = 0;
 	private int countS3 = 0;
 	private int countS4 = 0;
-	private int countS5 = 0;
+	private int count11 = 0;
+	private int count12 = 0;
 	String type = "";
 
 	public ATClient(String serverName, int serverPort) {
@@ -136,7 +137,7 @@ public class ATClient implements Runnable {
 							countC1++;
 						}
 						if (type.equals("2")) {
-							Config.testC2=true;
+							Config.testC2 = true;
 							if (countC2 == 0) {
 								streamOut.write("\n");
 							}
@@ -182,7 +183,7 @@ public class ATClient implements Runnable {
 							countC2++;
 						}
 						if (type.equals("3")) {
-							Config.testC3=true;
+							Config.testC3 = true;
 							if (countC3 == 0) {
 								streamOut.write("\n");
 							}
@@ -370,13 +371,10 @@ public class ATClient implements Runnable {
 								streamOut.write("" + "\n");
 							}
 							if (countS3 == 9) {
-								try
-								{
-								    Thread.sleep(5000);
-								}
-								catch(InterruptedException ex)
-								{
-								    Thread.currentThread().interrupt();
+								try {
+									Thread.sleep(5000);
+								} catch (InterruptedException ex) {
+									Thread.currentThread().interrupt();
 								}
 								streamOut.write("Drop Course" + "\n");
 							}
@@ -424,6 +422,293 @@ public class ATClient implements Runnable {
 							}
 							countS4++;
 						}
+						if (type.equals("11")) {
+							if (count11 == 0) {
+								streamOut.write("\n");
+							}
+							if (count11 == 1) {
+								streamOut.write("Clerk" + "\n");
+							}
+							if (count11 == 3) {
+								streamOut.write("idk" + "\n");
+							}
+							if (count11 == 4) {
+								streamOut.write("admin" + "\n");
+							}
+							if (count11 == 5) {
+								streamOut.write("Create Course" + "\n");
+							}
+							if (count11 == 6) {
+								streamOut.write("4109, 2345678, 3, y, 1, 4, y, y" + "\n");
+							}
+							if (count11 == 7) {
+								streamOut.write("4109, 234567, 3, y, 1, 4, y, y" + "\n");
+							}
+							if (count11 == 8) {
+								streamOut.write("" + "\n");
+							}
+							if (count11 == 9) {
+								streamOut.write("Create Course" + "\n");
+							}
+							if (count11 == 10) {
+								streamOut.write("4109, 234567, 3, y, 1, 4, y, y" + "\n");
+							}
+							if (count11 == 11) {
+								streamOut.write("Create Course" + "\n");
+							}
+							if (count11 == 12) {
+								streamOut.write("4004, 123456, 0, y, 0, 4, n, y" + "\n");
+							}
+							if (count11 == 13) {
+								streamOut.write("" + "\n");
+							}
+							if (count11 == 14) {
+								streamOut.write("Create Course" + "\n");
+							}
+							if (count11 == 15) {
+								streamOut.write("5106, 456789, 1, n, 1, 3, y, n" + "\n");
+							}
+							if (count11 == 16) {
+								streamOut.write("" + "\n");
+							}
+							if (count11 == 17) {
+								streamOut.write("Delete Course" + "\n");
+							}
+							if (count11 == 18) {
+								streamOut.write("123456" + "\n");
+							}
+							if (count11 == 19) {
+								streamOut.write("" + "\n");
+							}
+							if (count11 == 20) {
+								streamOut.write("Create Student" + "\n");
+							}
+							if (count11 == 21) {
+								streamOut.write("1111111111, Joe, y" + "\n");
+							}
+							if (count11 == 22) {
+								streamOut.write("111111111, Joe, y" + "\n");
+							}
+							if (count11 == 23) {
+								streamOut.write("" + "\n");
+							}
+							if (count11 == 24) {
+								streamOut.write("Create Student" + "\n");
+							}
+							if (count11 == 25) {
+								streamOut.write("111111111, Joe, y" + "\n");
+							}
+							if (count11 == 26) {
+								streamOut.write("Create Student" + "\n");
+							}
+							if (count11 == 27) {
+								streamOut.write("222222222, Will, y" + "\n");
+							}
+							if (count11 == 28) {
+								streamOut.write("Delete Student" + "\n");
+							}
+							if (count11 == 29) {
+								streamOut.write("222222223" + "\n");
+							}
+							if (count11 == 30) {
+								streamOut.write("Delete Student" + "\n");
+							}
+							if (count11 == 31) {
+								streamOut.write("222222222" + "\n");
+							}
+							if (count11 == 32) {
+								streamOut.write("" + "\n");
+							}
+							if (count11 == 33) {
+								streamOut.write("Exit" + "\n");
+							}
+							count11++;
+						}
+						if (type.equals("12")) {
+							if (count12 == 0) {
+								try {
+									Thread.sleep(1000);
+								} catch (InterruptedException ex) {
+									Thread.currentThread().interrupt();
+								}
+								streamOut.write("Student" + "\n");
+							}
+							if (count12 == 1) {
+								streamOut.write("111114321, Joe" + "\n");
+							}
+							if (count12 == 2) {
+								streamOut.write("student" + "\n");
+							}
+							if (count12 == 3) {
+								streamOut.write("111111111, Joe" + "\n");
+							}
+							if (count12 == 4) {
+								streamOut.write("Select Course" + "\n");
+							}
+							if (count12 == 6) {
+								streamOut.write("234568" + "\n");
+							}
+							if (count12 == 7) {
+								streamOut.write("234567" + "\n");
+							}
+							if (count12 == 8) {
+								streamOut.write("" + "\n");
+							}
+							if (count12 == 9) {
+								streamOut.write("Select Course" + "\n");
+							}
+							if (count12 == 10) {
+								streamOut.write("234567" + "\n");
+							}
+							if (count12 == 11) {
+								streamOut.write("" + "\n");
+							}
+							if (count12 == 12) {
+								streamOut.write("Register for Course" + "\n");
+							}
+							if (count12 == 13) {
+								streamOut.write("234567" + "\n");
+							}
+							if (count12 == 14) {
+								streamOut.write("" + "\n");
+							}
+							if (count12 == 15) {
+								streamOut.write("Select Course" + "\n");
+							}
+							if (count12 == 16) {
+								streamOut.write("234567" + "\n");
+							}
+							if (count12 == 17) {
+								streamOut.write("" + "\n");
+							}
+							if (count12 == 18) {
+								streamOut.write("Deregister Course" + "\n");
+							}
+							if (count12 == 19) {
+								streamOut.write("234567" + "\n");
+							}
+							if (count12 == 20) {
+								streamOut.write("" + "\n");
+							}
+							if (count12 == 21) {
+								streamOut.write("Drop Course" + "\n");
+							}
+							if (count12 == 22) {
+								streamOut.write("234567" + "\n");
+							}
+							if (count12 == 23) {
+								streamOut.write("" + "\n");
+							}
+							if (count12 == 24) {
+								try {
+									Thread.sleep(5000);
+								} catch (InterruptedException ex) {
+									Thread.currentThread().interrupt();
+								}
+								streamOut.write("Register for Course" + "\n");
+							}
+							if (count12 == 25) {
+								streamOut.write("234567" + "\n");
+							}
+							if (count12 == 26) {
+								streamOut.write("" + "\n");
+							}
+							if (count12 == 27) {
+								streamOut.write("Deregister Course" + "\n");
+							}
+							if (count12 == 28) {
+								streamOut.write("2345678" + "\n");
+							}
+							if (count12 == 29) {
+								streamOut.write("234567" + "\n");
+							}
+							if (count12 == 30) {
+								streamOut.write("" + "\n");
+							}
+							if (count12 == 31) {
+								streamOut.write("Register for Course" + "\n");
+							}
+							if (count12 == 32) {
+								streamOut.write("234567" + "\n");
+							}
+							if (count12 == 33) {
+								streamOut.write("" + "\n");
+							}
+							if (count12 == 34) {
+								streamOut.write("Drop Course" + "\n");
+							}
+							if (count12 == 35) {
+								streamOut.write("234567" + "\n");
+							}
+							if (count12 == 36) {
+								streamOut.write("" + "\n");
+							}
+							if (count12 == 37) {
+								streamOut.write("Select Course" + "\n");
+							}
+							if (count12 == 38) {
+								streamOut.write("456789" + "\n");
+							}
+							if (count12 == 39) {
+								streamOut.write("" + "\n");
+							}
+							if (count12 == 40) {
+								streamOut.write("Register for Course" + "\n");
+							}
+							if (count12 == 41) {
+								streamOut.write("456789" + "\n");
+							}
+							if (count12 == 42) {
+								streamOut.write("" + "\n");
+							}
+							if (count12 == 43) {
+								try {
+									Thread.sleep(5000);
+								} catch (InterruptedException ex) {
+									Thread.currentThread().interrupt();
+								}
+								streamOut.write("Register for course" + "\n");
+							}
+							if (count12 == 44) {
+								streamOut.write("234567" + "\n");
+							}
+							if (count12 == 45) {
+								streamOut.write("" + "\n");
+							}
+							if (count12 == 46) {
+								streamOut.write("Deregister Course" + "\n");
+							}
+							if (count12 == 47) {
+								streamOut.write("456789" + "\n");
+							}
+							if (count12 == 48) {
+								streamOut.write("Drop Course" + "\n");
+							}
+							if (count12 == 49) {
+								streamOut.write("234567" + "\n");
+							}
+							if (count12 == 50) {
+								streamOut.write("" + "\n");
+							}
+							if (count12 == 51) {
+								try {
+									Thread.sleep(5000);
+								} catch (InterruptedException ex) {
+									Thread.currentThread().interrupt();
+								}
+								streamOut.write("Drop Course" + "\n");
+							}
+							if (count12 == 52) {
+								streamOut.write("456789" + "\n");
+							}
+							if (count12 == 53) {
+								streamOut.write("" + "\n");
+							}
+							if (count12 == 54) {
+								streamOut.write("Exit" + "\n");
+							}
+							count12++;
+						}
 					}
 				} else {
 					System.out.println(ID + ": Stream Closed");
@@ -437,14 +722,13 @@ public class ATClient implements Runnable {
 
 	}
 
-	public void handle(String msg) {//System.out.println(msg + "!");
+	public void handle(String msg) {// System.out.println(msg + "!");
 		if (msg.equalsIgnoreCase("Exit")) {
 			System.out.println("Exit");
 			System.out.println("Good bye.");
 			System.exit(1);
 			stop();
-		}
-		else {
+		} else {
 			System.out.println(msg);
 		}
 	}

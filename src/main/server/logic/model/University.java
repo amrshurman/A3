@@ -63,7 +63,7 @@ public class University implements UniversityInt {
 		timer_registrationstarts = new Timer();
 		timer_registrationends = new Timer();
 		timer_termends = new Timer();
-		if (Config.testMode == false) {
+		if ((Config.testMode == false)&&(Config.testMode2 == false)) {
 			timer_registrationstarts.schedule(new TimerTask() {
 
 				@Override
@@ -131,7 +131,19 @@ public class University implements UniversityInt {
 			}, (15000));
 		}
 	}
-
+	
+	public void passFail() {
+		for (int i=0;i<students.size();i++) {
+			for (int j=0;j<students.get(i).getRegisteredCourses().size();j++) {
+				if (getGrade(students.get(i).getRegisteredCourses().get(j))>=50) {
+					
+				}
+			}
+		}
+	}
+	private int getGrade(Course c) {
+		return 0;
+	}
 	private void InitializeCourses() {
 		courses.clear();
 /*
