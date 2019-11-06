@@ -154,6 +154,9 @@ public class InputHandler {
 					if (ccount == 5) {
 						output += "\n3007, 987654, 1, y, 2, 2, y, n";
 					}
+					if (ccount == 6) {
+						output += "\n4106, 369369, 5, n, 2, 1, y, n";
+					}
 					ccount++;
 				}
 				if (Config.testMode2 == true) {
@@ -169,7 +172,10 @@ public class InputHandler {
 				oo.setOutput(output);
 				oo.setState(state);
 			} else if (input.equalsIgnoreCase("create student")) {
-				output = "Please Input Student Info: 'student number, name, is fulltime(y/n)'";
+				if (Config.testMode2==true) {
+					output="Create Student";
+				}
+				output += "Please Input Student Info: 'student number, name, is fulltime(y/n)'";
 				state = CREATESTUDENT;
 				if (Config.testMode == true && sccount == 0) {
 					output = "Please Input Student Info: 'student number, name, is fulltime(y/n)'"
@@ -199,7 +205,10 @@ public class InputHandler {
 				oo.setOutput(output);
 				oo.setState(state);
 			} else if (input.equalsIgnoreCase("cancel course")) {
-				output = "Please Input Course Info: 'course code'\nAvailable Course List: ";
+				if ((Config.testMode == true)||(Config.testMode2 == true)) {
+					output = "Cancel Course \n";
+					}
+				output += "Please Input Course Info: 'course code'\nAvailable Course List: ";
 				for (int i = 0; i < University.getInstance().Courses().size(); i++) {
 					output = output + "\n" + University.getInstance().Courses().get(i).toString();
 				}
@@ -207,7 +216,9 @@ public class InputHandler {
 				oo.setOutput(output);
 				oo.setState(state);
 			} else if (input.equalsIgnoreCase("delete course")) {
+				if ((Config.testMode == true)||(Config.testMode2 == true)) {
 				output += "Delete Course \n";
+				}
 				output += "Please Input Course Info: 'course code'\nAvailable Course List: ";
 				for (int i = 0; i < University.getInstance().Courses().size(); i++) {
 					output = output + "\n" + University.getInstance().Courses().get(i).toString();
@@ -217,7 +228,7 @@ public class InputHandler {
 				}
 				if (Config.testMode2 == true) {
 					if (dc == 0) {
-						output += "\n123456";
+						output += "\n923457";
 					} else {
 						output += "\n234567";
 					}

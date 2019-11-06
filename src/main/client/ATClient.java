@@ -278,6 +278,26 @@ public class ATClient implements Runnable {
 								streamOut.write("");
 							}
 							if (countC3 == 31) {
+								streamOut.write("Create Course" + "\n");
+							}
+							if (countC3 == 32) {
+								streamOut.write("4106, 369369, 5, n, 2, 1, y, n" + "\n");
+							}
+							if (countC3 == 34) {
+								try {
+									Thread.sleep(10000);
+								} catch (InterruptedException ex) {
+									Thread.currentThread().interrupt();
+								}
+								streamOut.write("Cancel Course"+ "\n");
+							}
+							if (countC3 == 35) {
+								streamOut.write("369369" + "\n");
+							}
+							if (countC3 == 36) {
+								streamOut.write("" + "\n");
+							}
+							if (countC3 == 37) {
 								streamOut.write("Exit" + "\n");
 							}
 							countC3++;
@@ -463,63 +483,94 @@ public class ATClient implements Runnable {
 								streamOut.write("" + "\n");
 							}
 							if (count11 == 14) {
-								streamOut.write("Create Course" + "\n");
+								streamOut.write("Cancel Course" + "\n");
 							}
 							if (count11 == 15) {
-								streamOut.write("5106, 456789, 1, n, 1, 3, y, n" + "\n");
+								streamOut.write("123456" + "\n");
 							}
 							if (count11 == 16) {
 								streamOut.write("" + "\n");
 							}
 							if (count11 == 17) {
-								streamOut.write("Delete Course" + "\n");
+								streamOut.write("Create Course" + "\n");
 							}
 							if (count11 == 18) {
-								streamOut.write("123456" + "\n");
+								streamOut.write("5106, 456789, 1, n, 1, 3, y, n" + "\n");
 							}
 							if (count11 == 19) {
 								streamOut.write("" + "\n");
 							}
 							if (count11 == 20) {
-								streamOut.write("Create Student" + "\n");
+								streamOut.write("Delete Course" + "\n");
 							}
 							if (count11 == 21) {
-								streamOut.write("1111111111, Joe, y" + "\n");
+								streamOut.write("923457" + "\n");
 							}
 							if (count11 == 22) {
-								streamOut.write("111111111, Joe, y" + "\n");
-							}
-							if (count11 == 23) {
 								streamOut.write("" + "\n");
 							}
-							if (count11 == 24) {
+							if (count11 == 23) {
 								streamOut.write("Create Student" + "\n");
+							}
+							if (count11 == 24) {
+								streamOut.write("1111111111, Joe, y" + "\n");
 							}
 							if (count11 == 25) {
 								streamOut.write("111111111, Joe, y" + "\n");
 							}
 							if (count11 == 26) {
-								streamOut.write("Create Student" + "\n");
-							}
-							if (count11 == 27) {
-								streamOut.write("222222222, Will, y" + "\n");
-							}
-							if (count11 == 28) {
-								streamOut.write("Delete Student" + "\n");
-							}
-							if (count11 == 29) {
-								streamOut.write("222222223" + "\n");
-							}
-							if (count11 == 30) {
-								streamOut.write("Delete Student" + "\n");
-							}
-							if (count11 == 31) {
-								streamOut.write("222222222" + "\n");
-							}
-							if (count11 == 32) {
 								streamOut.write("" + "\n");
 							}
+							if (count11 == 27) {
+								streamOut.write("Create Student" + "\n");
+							}
+							if (count11 == 28) {
+								streamOut.write("111111111, Joe, y" + "\n");
+							}
+							if (count11 == 29) {
+								streamOut.write("Create Student" + "\n");
+							}
+							if (count11 == 30) {
+								streamOut.write("222222222, Will, y" + "\n");
+							}
+							if (count11 == 31) {
+								streamOut.write("Delete Student" + "\n");
+							}
+							if (count11 == 32) {
+								streamOut.write("222222223" + "\n");
+							}
 							if (count11 == 33) {
+								streamOut.write("Delete Student" + "\n");
+							}
+							if (count11 == 34) {
+								streamOut.write("222222222" + "\n");
+							}
+							if (count11 == 35) {
+								streamOut.write("" + "\n");
+							}
+							if (count11 == 36) {
+								try {
+									Thread.sleep(10000);
+								} catch (InterruptedException ex) {
+									Thread.currentThread().interrupt();
+								}
+								streamOut.write("Cancel Course" + "\n");
+							}
+							if (count11 == 36) {
+								streamOut.write("923457" + "\n");
+							}
+							if (count11 == 38) {
+								try {
+									Thread.sleep(5000);
+								} catch (InterruptedException ex) {
+									Thread.currentThread().interrupt();
+								}
+								streamOut.write("123456" + "\n");
+							}
+							if (count11 == 40) {
+								streamOut.write("" + "\n");
+							}
+							if (count11 == 41) {
 								streamOut.write("Exit" + "\n");
 							}
 							count11++;

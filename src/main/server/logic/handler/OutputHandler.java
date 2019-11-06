@@ -181,9 +181,10 @@ public class OutputHandler {
 						if (Config.testMode2==true && cci==0) {
 							output.setOutput("4004, 123456, 0, y, 0, 4, n, y \nSuccess!");
 						}
-						else {
+						else if (Config.testMode2){
 							output.setOutput("5106, 456789, 1, n, 1, 3, y, n \nSuccess!");
 						}
+						cci++;
 					} else {
 						output.setOutput("The course already exists!");
 						if (Config.testMode2==true) {
@@ -277,6 +278,9 @@ public class OutputHandler {
 		
 		if (Config.TERM_ENDS) {
 			output.setOutput("Term ends!");
+			if (Config.testMode2==true) {
+				output.setOutput("123456 \nTerm ends!");
+			}
 			output.setState(CLERK);
 		} else if (Config.REGISTRATION_ENDS) {
 			if (input.replace(" ", "").equalsIgnoreCase("") || !isNum.matches()) {
@@ -293,6 +297,9 @@ public class OutputHandler {
 				if (University.getInstance()
 						.CheckCourse(Integer.parseInt(code)) == false) {
 					output.setOutput("The course does not exist!");
+					if (Config.testMode2==true) {
+						output.setOutput("923457 \nThe course does not exist!");
+					}
 					output.setState(CANCELCOURSE);
 				} else {
 					Course c = (Course) University.getInstance().GetCourse(
@@ -300,6 +307,9 @@ public class OutputHandler {
 					result = University.getInstance().CancelCourse(c);
 					if (result) {
 						output.setOutput("Success!");
+						if (Config.testMode==true) {
+							output.setOutput("369369 \nSuccess!");
+						}
 					} else {
 						output.setOutput("Fail to cancel!");
 					}
@@ -308,6 +318,9 @@ public class OutputHandler {
 			}
 		} else {
 			output.setOutput("Course cannot be canceled before registration ends!");
+			if (Config.testMode2==true) {
+				output.setOutput("123456 \nCourse cannot be canceled before registration ends!");
+			}
 			output.setState(CLERK);
 		}
 		return output;
