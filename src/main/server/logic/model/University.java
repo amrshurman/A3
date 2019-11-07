@@ -107,7 +107,7 @@ public class University implements UniversityInt {
 				@Override
 				public void run() {
 					Config.REGISTRATION_STARTS = true;
-					System.out.println("registration starts");
+					System.out.println("registration starts"); 
 					// System.out.println(Config.SIMULATED_DAY);
 				}
 			}, (5000));
