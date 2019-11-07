@@ -17,6 +17,7 @@ public class Config {
 	public static boolean TERM_ENDS = false;
 	public static boolean testMode = false;
 	public static boolean testMode2 = false;
+	public static boolean testMode3 = false;
 	public static boolean testC1=false;
 	public static boolean testC2=false;
 	public static boolean testC3=false;

@@ -44,6 +44,9 @@ public class ATServer implements Runnable {
 		if (s.equals("test2")) {
 			Config.testMode2=true;
 			}
+		if (s.equals("test3")) {
+			Config.testMode3=true;
+			}
 		try {
 			logger.info("Binding to port " + port);
 			clients = new HashMap<Integer, ServerThread>();

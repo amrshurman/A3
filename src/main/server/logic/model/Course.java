@@ -18,7 +18,7 @@ public class Course implements CourseInt {
 	String title;
 	int myCode;
 	int capsize;
-	
+	int space=0;
 	boolean enforcePrereqs;
 	List<Integer> preRequisites;
 	

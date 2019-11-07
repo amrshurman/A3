@@ -141,6 +141,12 @@ public class Student implements StudentInt {
 	public boolean RegisterCourse(Course course) {
 		// TODO Auto-generated method stub
 		boolean result = true;
+		if (course.space==course.capsize) {
+			logger.info(String.format(
+					"University Operation: student %d register course %d; State: Fail; Reason: The course is full!.",
+					this.StudentNumber(), course.Code()));
+			return false;
+		}
 		if(!IsSelected(course)||IsRegistered(course)||IsCompleted(course)) {
 			result = false;
 			logger.info(String.format("Student Operation: student %d register course %d; State: Fail; Reason: student hasn't selected this course or student has completed this course", this.StudentNumber(), course.Code()));

@@ -32,6 +32,7 @@ public class InputHandler {
 	private int secount = 0;
 	private int scount = 0;
 	private int sccount = 0;
+	private int sccount2 = 0;
 	private int rcount = 0;
 	private int ci = 0;
 	private int cci = 0;
@@ -61,11 +62,11 @@ public class InputHandler {
 			oo.setState(state);
 		} else if (state == FINISHWAITING) {
 			if (input.equalsIgnoreCase("clerk")) {
-				if (Config.testMode == true) {
+				if ((Config.testMode == true) &&(Config.testMode3 == true)) {
 					output += "Clerk";
 				}
 				output += "\nPlease Input The Password:";
-				if (Config.testMode == true) {
+				if ((Config.testMode == true)&&(Config.testMode3 == true)) {
 					output += "\nadmin";
 				}
 				if (Config.testMode2 == true) {
@@ -86,7 +87,7 @@ public class InputHandler {
 				oo.setOutput(output);
 				oo.setState(state);
 			} else if (input.equalsIgnoreCase("student")) {
-				if (Config.testMode == true) {
+				if ((Config.testMode == true)||(Config.testMode3==true)) {
 					output += "Student";
 				}
 				output += "\nPlease Input Student number and Name: 'student number, name'";
@@ -102,6 +103,15 @@ public class InputHandler {
 					}
 					if (scount == 3) {
 						output += "\n444444444, Sarah";
+					}
+					scount++;
+				}
+				if (Config.testMode3 == true) {
+					if (scount == 0) {
+						output += "\n111111111, Joe";
+					}
+					if (scount == 1) {
+						output += "\n222222222, Will";
 					}
 					scount++;
 				}
@@ -131,7 +141,7 @@ public class InputHandler {
 			oo.setState(state);
 		} else if (state == CLERK) {
 			if (input.equalsIgnoreCase("create course")) {
-				if ((Config.testMode==true)||(Config.testMode2==true)) {
+				if ((Config.testMode==true)||(Config.testMode2==true)||(Config.testMode3==true)) {
 				output += "Create Course \n";
 				}
 				output += "Please Input Course Info: 'title, course code, capsize, enforce prereqs(y/n), number of midterms, number of assignments, has a final(y/n), is project course(y/n)'";
@@ -167,12 +177,14 @@ public class InputHandler {
 					//}
 					//cci++;
 				}
-
+				if (Config.testMode3 == true) {
+					output += "4004, 123456, 1, y, 0, 4, n, y";
+				}
 				state = CREATECOURSE;
 				oo.setOutput(output);
 				oo.setState(state);
 			} else if (input.equalsIgnoreCase("create student")) {
-				if (Config.testMode2==true) {
+				if ((Config.testMode2==true)||(Config.testMode3==true)) {
 					output="Create Student";
 				}
 				output += "Please Input Student Info: 'student number, name, is fulltime(y/n)'";
@@ -201,7 +213,16 @@ public class InputHandler {
 					output = "Please Input Student Info: 'student number, name, is fulltime(y/n)'"
 							+ "\n555555555, Sasha, y";
 				}
+				if (Config.testMode3 == true && sccount2 == 0) {
+					output = "Please Input Student Info: 'student number, name, is fulltime(y/n)'"
+							+ "\n111111111, Joe, y";
+				}
+				if (Config.testMode3 == true && sccount2 == 1) {
+					output = "Please Input Student Info: 'student number, name, is fulltime(y/n)'"
+							+ "\n222222222, Will, y";
+				}
 				sccount++;
+				sccount2++;
 				oo.setOutput(output);
 				oo.setState(state);
 			} else if (input.equalsIgnoreCase("cancel course")) {
@@ -336,7 +357,7 @@ public class InputHandler {
 					output += "\n456789";
 				}
 				if (Config.testMode == true && rcount == 1) {
-					output += "\n987654";
+			//		output += "\n987654";
 				}
 				if (Config.testMode == true && rcount == 2) {
 					output += "\n234567";
@@ -363,7 +384,7 @@ public class InputHandler {
 					state = DROPCOURSE;
 				}
 				if (Config.testMode == true) {
-					output += "\n234567";
+			//		output += "\n987654";
 				}
 				oo.setOutput(output);
 				oo.setState(state);

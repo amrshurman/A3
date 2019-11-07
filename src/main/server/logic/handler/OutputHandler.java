@@ -178,7 +178,7 @@ public class OutputHandler {
 							Integer.parseInt(numofassignments), hasf, isp);
 					if (result) {
 						output.setOutput("Success!");
-						if (Config.testMode2==true && cci==0) {
+						if ((Config.testMode2==true && cci==0)||(Config.testMode3==true)) {
 							output.setOutput("4004, 123456, 0, y, 0, 4, n, y \nSuccess!");
 						}
 						else if (Config.testMode2){
@@ -462,11 +462,20 @@ public class OutputHandler {
 					Integer.parseInt(code)));
 			if (result) {
 				output.setOutput("Success!");
+				if (Config.testMode==true && si==3) {
+			//		output.setOutput("987654 \nSuccess!");
+				}
+				if (Config.testMode==true && si==2) {
+					output.setOutput("234567 \nSuccess!");
+				}
 				if (Config.testMode2==true && si==0) {
 					output.setOutput("234567 \nSuccess!");
 				}
 				else if (Config.testMode2==true && si==1){
 					output.setOutput("456789 \nSuccess!");
+				}
+				if (Config.testMode3==true) {
+					output.setOutput("123456 \nSuccess!");
 				}
 				si++;
 			} else {
@@ -532,11 +541,17 @@ public class OutputHandler {
 						student, course);
 				if (result) {
 					output.setOutput("Success!");
+					if (Config.testMode==true && ri==1) {
+						output.setOutput("987654 \nSuccess!");
+					}
 					if (Config.testMode2==true && ri==0) {
 						output.setOutput("234567 \nSuccess!");
 					}
 					else if (Config.testMode2==true && ri==1){
 						output.setOutput("456789 \nSuccess!");
+					}
+					if (Config.testMode3==true) {
+						output.setOutput("123456 \nSuccess!");
 					}
 					ri++;
 				} else {
@@ -592,6 +607,9 @@ public class OutputHandler {
 					Integer.parseInt(code)));
 			if (result) {
 				output.setOutput("Success!");
+				if (Config.testMode==true) {
+					output.setOutput("234567 \nSuccess!");
+				}
 			} else {
 				output.setOutput("Unable to drop this course!");
 				if (Config.testMode2==true) {

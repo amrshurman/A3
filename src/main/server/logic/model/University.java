@@ -63,7 +63,7 @@ public class University implements UniversityInt {
 		timer_registrationstarts = new Timer();
 		timer_registrationends = new Timer();
 		timer_termends = new Timer();
-		if ((Config.testMode == false)&&(Config.testMode2 == false)) {
+		if ((Config.testMode == false)&&(Config.testMode2 == false)&&(Config.testMode3 == false)) {
 			timer_registrationstarts.schedule(new TimerTask() {
 
 				@Override
@@ -94,6 +94,11 @@ public class University implements UniversityInt {
 						University.getInstance().MarkStudents(University.getInstance().getCourses().get(i));
 					}
 					System.out.println("term ends");
+					for (int i=0;i<students.size();i++) {
+						for (int j=0;j<students.get(i).getRegisteredCourses().size();j++) {
+							System.out.println(students.get(i).getStudentName() + " with Student ID: " + students.get(i).getStudentNumber() + " has fulfilled course title: " + students.get(i).getRegisteredCourses().get(j).getTitle() + " with course code: "+ students.get(i).getRegisteredCourses().get(j).getMyCode());
+						}
+					}
 				}
 			}, (20000 * 118));
 		}
@@ -127,6 +132,12 @@ public class University implements UniversityInt {
 					//	University.getInstance().MarkStudents(University.getInstance().getCourses().get(i));
 					}
 					System.out.println("term ends");
+					for (int i=0;i<students.size();i++) {
+						for (int j=0;j<students.get(i).getRegisteredCourses().size();j++) {
+							System.out.println(students.get(i).getStudentName() + " with Student ID: " + students.get(i).getStudentNumber() + " has fulfilled course title: " + students.get(i).getRegisteredCourses().get(j).getTitle() + " with course code: "+ students.get(i).getRegisteredCourses().get(j).getMyCode());
+						}
+					}
+					System.exit(1);
 				}
 			}, (15000));
 		}
@@ -381,7 +392,6 @@ public class University implements UniversityInt {
 	public boolean RegisterStudentForCourse(Student student, Course course) {
 		// TODO Auto-generated method stub
 		boolean result = true;
-
 		int flag1 = 0;
 		int flag2 = 0;
 		for (int i = 0; i < courses.size(); i++) {
@@ -398,6 +408,7 @@ public class University implements UniversityInt {
 		if (CheckCourse(course.Code()) && CheckStudent(student.StudentNumber()) && student.IsSelected(course)) {
 			result = student.RegisterCourse(course);
 			if (result) {
+				course.space++;
 				result = course.AddStudent(student);
 				logger.info(String.format("University Operation: student %d register course %d; State: Success",
 						student.StudentNumber(), course.Code()));
@@ -419,9 +430,11 @@ public class University implements UniversityInt {
 	public boolean DeRegisterStudentFromCourse(Student student, Course course) {
 		// TODO Auto-generated method stub
 		boolean result = true;
+		
 		if (CheckCourse(course.Code()) && CheckStudent(student.StudentNumber()) && student.IsRegistered(course)) {
 			result = student.DeRegisterCourse(course);
 			if (result) {
+				course.space--;
 				result = course.RemoveStudent(student);
 				logger.info(String.format("University Operation: student %d deregister course %d; State: Success",
 						student.StudentNumber(), course.Code()));
