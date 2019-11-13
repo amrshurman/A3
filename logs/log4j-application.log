@@ -6211,4 +6211,32 @@ Successfully Log Out!
 
 @2019-11-12 21:45:52 INFO  ATServer:109 - Client: 54230 Exits
 @2019-11-12 21:45:52 INFO  ATServer:113 - Client : 54230Exits
+@2019-11-12 23:33:00 INFO  String:42 - University Operation: Initialize university; courses: []
+@2019-11-12 23:33:00 INFO  String:43 - University Operation: Initialize university; students: []
+@2019-11-12 23:33:00 INFO  String:24 - Register student for course starts
+@2019-11-12 23:33:34 INFO  String:42 - University Operation: Initialize university; courses: []
+@2019-11-12 23:33:34 INFO  String:43 - University Operation: Initialize university; students: []
+@2019-11-12 23:33:34 INFO  String:24 - Register student for course starts
+@2019-11-12 23:34:51 INFO  String:42 - University Operation: Initialize university; courses: []
+@2019-11-12 23:34:51 INFO  String:43 - University Operation: Initialize university; students: []
+@2019-11-12 23:34:51 INFO  String:24 - Register student for course starts
+@2019-11-12 23:34:56 INFO  String:42 - University Operation: Initialize university; courses: []
+@2019-11-12 23:34:56 INFO  String:43 - University Operation: Initialize university; students: []
+@2019-11-12 23:34:56 INFO  String:24 - Register student for course starts
+@2019-11-12 23:35:17 INFO  String:42 - University Operation: Initialize university; courses: []
+@2019-11-12 23:35:17 INFO  String:43 - University Operation: Initialize university; students: []
+@2019-11-12 23:35:17 INFO  String:24 - Register student for course starts
+@2019-11-12 23:35:17 INFO  String:57 - Register student for course starts
+@2019-11-12 23:35:17 INFO  String:35 - Register student for course starts
+@2019-11-12 23:35:17 INFO  String:35 - Student Operation: Initialize student; student number: 101075404, student name: mike
+@2019-11-12 23:35:17 INFO  String:46 - Register student for course starts
+@2019-11-12 23:35:17 INFO  String:51 - Course Operation: Initialize course; title: Virtual Environments, myCode: 115151
+@2019-11-12 23:40:31 INFO  ATClient:81 - Class: ATClient    : Exception thrown : Connection refused: connect 
+
+@2019-11-12 23:48:28 INFO  ATClient:81 - Class: ATClient    : Exception thrown : Connection refused: connect 
+
+@2019-11-13 13:24:43 INFO  ATClient:81 - Class: ATClient    : Exception thrown : Connection refused: connect 
+
+@2019-11-13 13:24:51 INFO  ATClient:81 - Class: ATClient    : Exception thrown : Connection refused: connect 
+
 @

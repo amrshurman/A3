@@ -25,7 +25,8 @@ public class TestRegisterStudentForCourse {
 		Course c = University.getInstance().GetCourse(105104);
 		Student s = University.getInstance().GetStudent(101075401);
 		s.SelectCourse(c);
-		assertTrue(University.getInstance().RegisterStudentForCourse(s, c));
+		int r =(University.getInstance().RegisterStudentForCourse(s, c));System.out.println(r);
+		assertEquals(r,0);
 		logger.info(String.format("Register student for course ends"));
 	}
 	
@@ -35,7 +36,8 @@ public class TestRegisterStudentForCourse {
 		Course c = University.getInstance().GetCourse(105104);
 		Student s = new Student(101075404, "mike", true);
 		s.SelectCourse(c);
-		assertFalse(University.getInstance().RegisterStudentForCourse(s, c));
+		int r =(University.getInstance().RegisterStudentForCourse(s, c));System.out.println(r);
+		assertEquals(r,0);
 		logger.info(String.format("Register student for course ends"));
 	}
 	
@@ -45,7 +47,8 @@ public class TestRegisterStudentForCourse {
 		Course c = new Course("Virtual Environments", 115151, 30);
 		Student s = University.getInstance().GetStudent(101075401);
 		s.SelectCourse(c);
-		assertFalse(University.getInstance().RegisterStudentForCourse(s, c));
+		int r =(University.getInstance().RegisterStudentForCourse(s, c));System.out.println(r);
+		assertEquals(r,0);
 		logger.info(String.format("Register student for course ends"));
 	}
 	
@@ -54,7 +57,8 @@ public class TestRegisterStudentForCourse {
 		logger.info(String.format("Register student for course starts"));
 		Course c = University.getInstance().GetCourse(105008);
 		Student s = University.getInstance().GetStudent(101075401);
-		assertFalse(University.getInstance().RegisterStudentForCourse(s, c));
+		int r =(University.getInstance().RegisterStudentForCourse(s, c));System.out.println(r);
+		assertEquals(r,0);
 		logger.info(String.format("Register student for course ends"));
 	}
 
