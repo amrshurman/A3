@@ -179,7 +179,7 @@ public class OutputHandler {
 					if (result) {
 						output.setOutput("Success!");
 						if ((Config.testMode2==true && cci==0)||(Config.testMode3==true)) {
-							output.setOutput("4004, 123456, 0, y, 0, 4, n, y \nSuccess!");
+							output.setOutput("4004, 123456, 1, y, 0, 4, n, y \nSuccess!");
 						}
 						else if (Config.testMode2){
 							output.setOutput("5106, 456789, 1, n, 1, 3, y, n \nSuccess!");

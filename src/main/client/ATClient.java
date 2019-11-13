@@ -480,7 +480,7 @@ public class ATClient implements Runnable {
 								streamOut.write("Create Course" + "\n");
 							}
 							if (count11 == 12) {
-								streamOut.write("4004, 123456, 0, y, 0, 4, n, y" + "\n");
+								streamOut.write("4004, 123456, 1, y, 0, 4, n, y" + "\n");
 							}
 							if (count11 == 13) {
 								streamOut.write("" + "\n");
