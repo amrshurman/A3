@@ -168,7 +168,7 @@ public class Student implements StudentInt {
 	public boolean DropCourse(Course course) {//System.out.println(IsRegistered(course));System.out.println(IsCompleted(course));
 		// TODO Auto-generated method stub
 		boolean result = true;
-		if(!IsRegistered(course)||IsCompleted(course)) {System.out.println(!IsRegistered(course));
+		if(!IsRegistered(course)||IsCompleted(course)) {//System.out.println(!IsRegistered(course));
 			result = false;
 			logger.info(String.format("Student Operation: student %d drop course %d; State: Fail; Reason: student hasn't selected this course or student has completed this course", this.StudentNumber(), course.Code()));
 		} else {//System.out.println(result);

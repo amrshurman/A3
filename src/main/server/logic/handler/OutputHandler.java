@@ -64,6 +64,9 @@ public class OutputHandler {
 		boolean result = true;
 		if (strArray.length != 2) {
 			output.setOutput("Your input should be in this format: 'student number, name'");
+			if (Config.testMode2==true) {
+				output.setOutput("Your input should be in this format: 'student number, name'\n 111111111, Joe");
+			}
 			output.setState(STUDENTLOGIN);
 		} else {
 			String number = strArray[0].trim();
@@ -537,9 +540,9 @@ public class OutputHandler {
 						studentnumber);
 				Course course = University.getInstance().GetCourse(
 						Integer.parseInt(code));
-				result = University.getInstance().RegisterStudentForCourse(
+				int r = University.getInstance().RegisterStudentForCourse(
 						student, course);
-				if (result) {
+				if (r==0) {
 					output.setOutput("Success!");
 					if (Config.testMode==true && ri==1) {
 						output.setOutput("987654 \nSuccess!");
@@ -554,8 +557,14 @@ public class OutputHandler {
 						output.setOutput("123456 \nSuccess!");
 					}
 					ri++;
-				} else {
+				}
+				else if (r==1){
 					output.setOutput("Unable to register for this course!");
+				}else if (r==2){
+					output.setOutput("Unable to register for this course because course is full!");
+					if (Config.testMode3==true) {
+						output.setOutput("123456 \nUnable to register for this course because course is full!!");
+					}
 				}
 				output.setState(STUDENT);
 			}

@@ -62,11 +62,11 @@ public class InputHandler {
 			oo.setState(state);
 		} else if (state == FINISHWAITING) {
 			if (input.equalsIgnoreCase("clerk")) {
-				if ((Config.testMode == true) &&(Config.testMode3 == true)) {
+				if ((Config.testMode == true) ||(Config.testMode2 == true) ||(Config.testMode3 == true)) {
 					output += "Clerk";
 				}
 				output += "\nPlease Input The Password:";
-				if ((Config.testMode == true)&&(Config.testMode3 == true)) {
+				if ((Config.testMode == true)||(Config.testMode2 == true)||(Config.testMode3 == true)) {
 					output += "\nadmin";
 				}
 				if (Config.testMode2 == true) {
@@ -106,6 +106,15 @@ public class InputHandler {
 					}
 					scount++;
 				}
+				if (Config.testMode2 == true) {
+					if (scount == 0) {
+						output += "\n111114321, Joe";
+					}
+					if (scount == 1) {
+						output += "\n111111111, Joe";
+					}
+					scount++;
+				}
 				if (Config.testMode3 == true) {
 					if (scount == 0) {
 						output += "\n111111111, Joe";
@@ -119,7 +128,12 @@ public class InputHandler {
 				oo.setOutput(output);
 				oo.setState(state);
 			} else {
+				if (Config.testMode2==true) {
+					
+				}
+				else {
 				output = "Who Are you? Clerk or Student?";
+				}
 				if (Config.testMode == true) {
 					output = "Who Are you? Clerk or Student?" + "\nClerk";
 				}

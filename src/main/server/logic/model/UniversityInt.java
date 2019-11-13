@@ -21,7 +21,7 @@ public interface UniversityInt {
 			boolean isprojectcourse);
 	boolean CreateStudent(int number, String name, boolean isfulltime);
 	
-	boolean RegisterStudentForCourse(Student student, Course course);
+	int RegisterStudentForCourse(Student student, Course course);
 	boolean DeRegisterStudentFromCourse(Student student, Course course);
 	
 	boolean CancelCourse(Course course);

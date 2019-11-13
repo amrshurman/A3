@@ -288,7 +288,7 @@ public class ATClient implements Runnable {
 							}
 							if (countC3 == 34) {
 								try {
-									Thread.sleep(10000);
+									Thread.sleep(12000);
 								} catch (InterruptedException ex) {
 									Thread.currentThread().interrupt();
 								}
@@ -395,7 +395,7 @@ public class ATClient implements Runnable {
 							}
 							if (countS3 == 9) {
 								try {
-									Thread.sleep(5000);
+									Thread.sleep(6000);
 								} catch (InterruptedException ex) {
 									Thread.currentThread().interrupt();
 								}
@@ -553,7 +553,7 @@ public class ATClient implements Runnable {
 							}
 							if (count11 == 36) {
 								try {
-									Thread.sleep(10000);
+									Thread.sleep(12000);
 								} catch (InterruptedException ex) {
 									Thread.currentThread().interrupt();
 								}
@@ -564,7 +564,7 @@ public class ATClient implements Runnable {
 							}
 							if (count11 == 38) {
 								try {
-									Thread.sleep(5000);
+									Thread.sleep(6000);
 								} catch (InterruptedException ex) {
 									Thread.currentThread().interrupt();
 								}
@@ -585,6 +585,8 @@ public class ATClient implements Runnable {
 								} catch (InterruptedException ex) {
 									Thread.currentThread().interrupt();
 								}
+								streamOut.write("Student" + "\n");
+								streamOut.write("111114321, Joe" + "\n");
 								streamOut.write("Student" + "\n");
 							}
 							if (count12 == 1) {
@@ -655,7 +657,7 @@ public class ATClient implements Runnable {
 							}
 							if (count12 == 24) {
 								try {
-									Thread.sleep(5000);
+									Thread.sleep(6000);
 								} catch (InterruptedException ex) {
 									Thread.currentThread().interrupt();
 								}
@@ -717,7 +719,7 @@ public class ATClient implements Runnable {
 							}
 							if (count12 == 43) {
 								try {
-									Thread.sleep(5000);
+									Thread.sleep(6000);
 								} catch (InterruptedException ex) {
 									Thread.currentThread().interrupt();
 								}
@@ -746,7 +748,7 @@ public class ATClient implements Runnable {
 							}
 							if (count12 == 51) {
 								try {
-									Thread.sleep(5000);
+									Thread.sleep(6000);
 								} catch (InterruptedException ex) {
 									Thread.currentThread().interrupt();
 								}
@@ -808,7 +810,7 @@ public class ATClient implements Runnable {
 							}
 							if (count21 == 0) {
 								try {
-									Thread.sleep(5000);
+									Thread.sleep(6000);
 								} catch (InterruptedException ex) {
 									Thread.currentThread().interrupt();
 								}
@@ -846,7 +848,7 @@ public class ATClient implements Runnable {
 							}
 							if (count22 == 0) {
 								try {
-									Thread.sleep(5000);
+									Thread.sleep(6000);
 								} catch (InterruptedException ex) {
 									Thread.currentThread().interrupt();
 								}

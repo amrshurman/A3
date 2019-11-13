@@ -110,7 +110,7 @@ public class University implements UniversityInt {
 					System.out.println("registration starts"); 
 					// System.out.println(Config.SIMULATED_DAY);
 				}
-			}, (5000));
+			}, (6000));
 
 			timer_registrationends.schedule(new TimerTask() {
 
@@ -121,7 +121,7 @@ public class University implements UniversityInt {
 					System.out.println("registration ends");
 					// System.out.println(Config.SIMULATED_DAY);
 				}
-			}, (10000));// System.out.println("test");
+			}, (12000));// System.out.println("test");
 			timer_termends.schedule(new TimerTask() {
 
 				@Override
@@ -137,9 +137,9 @@ public class University implements UniversityInt {
 							System.out.println(students.get(i).getStudentName() + " with Student ID: " + students.get(i).getStudentNumber() + " has fulfilled course title: " + students.get(i).getRegisteredCourses().get(j).getTitle() + " with course code: "+ students.get(i).getRegisteredCourses().get(j).getMyCode());
 						}
 					}
-					System.exit(1);
+					//System.exit(1);
 				}
-			}, (15000));
+			}, (18000));
 		}
 	}
 	
@@ -389,9 +389,10 @@ public class University implements UniversityInt {
 	}
 
 	@Override
-	public boolean RegisterStudentForCourse(Student student, Course course) {
+	public int RegisterStudentForCourse(Student student, Course course) {
 		// TODO Auto-generated method stub
 		boolean result = true;
+		int r=0;
 		int flag1 = 0;
 		int flag2 = 0;
 		for (int i = 0; i < courses.size(); i++) {
@@ -413,17 +414,19 @@ public class University implements UniversityInt {
 				logger.info(String.format("University Operation: student %d register course %d; State: Success",
 						student.StudentNumber(), course.Code()));
 			} else {
+				r=2;
 				logger.info(String.format(
 						"University Operation: student %d register course %d; State: Fail; Reason: The course registered has reached the maximum number.",
 						student.StudentNumber(), course.Code()));
 			}
 		} else {
+			r=1;
 			result = false;
 			logger.info(String.format(
 					"University Operation: student %d register course %d; State: Fail; Reason: The student or course doesn't exist or the student hasn't selected the course.",
 					student.StudentNumber(), course.Code()));
 		}
-		return result;
+		return r;
 	}
 
 	@Override
