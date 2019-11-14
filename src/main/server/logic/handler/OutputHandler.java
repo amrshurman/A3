@@ -643,7 +643,7 @@ public class OutputHandler {
 			} else {
 				output.setOutput("Unable to drop this course!");
 				if (Config.testMode2==true) {
-					output.setOutput("234567 \nUnable to drop this course!");
+					output.setOutput("123456 \nUnable to drop this course!");
 				}
 			}
 			output.setState(STUDENT);
