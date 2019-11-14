@@ -780,7 +780,7 @@ public class ATClient implements Runnable {
 								streamOut.write("Drop Course" + "\n");
 							}
 							if (count12 == 52) {
-								streamOut.write("234567" + "\n");
+								streamOut.write("123456" + "\n");
 							}
 							if (count12 == 53) {
 								streamOut.write("" + "\n");

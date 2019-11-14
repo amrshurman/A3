@@ -487,7 +487,7 @@ public class OutputHandler {
 					output.setOutput("234567 \nSuccess!");
 				}
 				else if (Config.testMode2==true && si==1){
-					output.setOutput("234567 \nSuccess!");
+					output.setOutput("123456 \nSuccess!");
 				}
 				else if (Config.testMode2==true && si==2){
 					output.setOutput("456789 \nSuccess!");
