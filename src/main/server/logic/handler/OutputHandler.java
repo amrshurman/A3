@@ -65,7 +65,7 @@ public class OutputHandler {
 		if (strArray.length != 2) {
 			output.setOutput("Your input should be in this format: 'student number, name'");
 			if (Config.testMode2==true) {
-				output.setOutput("Your input should be in this format: 'student number, name'\n 111111111, Joe");
+				output.setOutput("Your input should be in this format: 'student number, name'\n111111111, Joe");
 			}
 			output.setState(STUDENTLOGIN);
 		} else {
@@ -149,7 +149,7 @@ public class OutputHandler {
 						|| Integer.parseInt(code) > 999999) {
 					output.setOutput("The length of course code must be 6.");
 					if (Config.testMode2==true) {
-						output.setOutput("2345678 \nThe length of course code must be 6.");
+						output.setOutput("4109, 2345678, 3, y, 1, 4, y, y \nThe length of course code must be 6.");
 					}
 					output.setState(CREATECOURSE);
 				} else if (Integer.parseInt(numofmidterms) < 0
@@ -181,10 +181,16 @@ public class OutputHandler {
 							Integer.parseInt(numofassignments), hasf, isp);
 					if (result) {
 						output.setOutput("Success!");
-						if ((Config.testMode2==true && cci==0)||(Config.testMode3==true)) {
+						if (Config.testMode3==true) {
 							output.setOutput("4004, 123456, 1, y, 0, 4, n, y \nSuccess!");
 						}
-						else if (Config.testMode2){
+						else if(Config.testMode2==true && cci==0) {
+							output.setOutput("4109, 234567, 3, y, 1, 4, y, y \nSuccess!");
+						}
+						else if(Config.testMode2==true && cci==1) {
+							output.setOutput("4004, 123456, 1, y, 0, 4, n, y \nSuccess!");
+						}
+						else if (Config.testMode2 && cci==2){
 							output.setOutput("5106, 456789, 1, n, 1, 3, y, n \nSuccess!");
 						}
 						cci++;
@@ -216,6 +222,9 @@ public class OutputHandler {
 		
 		if (Config.TERM_ENDS) {
 			output.setOutput("Term ends!");
+			if (Config.testMode2==true) {
+				output.setOutput("333333333, Harry, y \nTerm ends.");
+			}
 			output.setState(CLERK);
 		} else if (!Config.REGISTRATION_STARTS) {
 			if (strArray.length != 3) {
@@ -387,6 +396,9 @@ public class OutputHandler {
 		
 		if (Config.TERM_ENDS) {
 			output.setOutput("Term ends!");
+			if (Config.testMode2==true) {
+				output.setOutput("111111111 \nTerm ends!");
+			}
 			output.setState(CLERK);
 		} else if (!Config.REGISTRATION_STARTS) {
 			if (input.replace(" ", "").equalsIgnoreCase("") || !isNum.matches()) {
@@ -475,6 +487,9 @@ public class OutputHandler {
 					output.setOutput("234567 \nSuccess!");
 				}
 				else if (Config.testMode2==true && si==1){
+					output.setOutput("234567 \nSuccess!");
+				}
+				else if (Config.testMode2==true && si==2){
 					output.setOutput("456789 \nSuccess!");
 				}
 				if (Config.testMode3==true) {
@@ -551,6 +566,9 @@ public class OutputHandler {
 						output.setOutput("234567 \nSuccess!");
 					}
 					else if (Config.testMode2==true && ri==1){
+						output.setOutput("234567 \nSuccess!");
+					}
+					else if (Config.testMode2==true && ri==2){
 						output.setOutput("456789 \nSuccess!");
 					}
 					if (Config.testMode3==true) {
@@ -560,6 +578,9 @@ public class OutputHandler {
 				}
 				else if (r==1){
 					output.setOutput("Unable to register for this course!");
+					if (Config.testMode2==true) {
+						output.setOutput("123456 \nUnable to register for this course!");
+					}
 				}else if (r==2){
 					output.setOutput("Unable to register for this course because course is full!");
 					if (Config.testMode3==true) {

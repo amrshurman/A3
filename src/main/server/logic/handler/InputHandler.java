@@ -62,7 +62,7 @@ public class InputHandler {
 			oo.setState(state);
 		} else if (state == FINISHWAITING) {
 			if (input.equalsIgnoreCase("clerk")) {
-				if ((Config.testMode == true) ||(Config.testMode2 == true) ||(Config.testMode3 == true)) {
+				if ((Config.testMode == true) ||(Config.testMode3 == true)) {
 					output += "Clerk";
 				}
 				output += "\nPlease Input The Password:";
@@ -183,14 +183,7 @@ public class InputHandler {
 					}
 					ccount++;
 				}
-				if (Config.testMode2 == true) {
-					//if (cci == 0) {
-						//output += "4109, 2345678, 3, y, 1, 4, y, y";
-					//} else {
-						output += "4109, 234567, 3, y, 1, 4, y, y";
-					//}
-					//cci++;
-				}
+				
 				if (Config.testMode3 == true) {
 					output += "4004, 123456, 1, y, 0, 4, n, y";
 				}
@@ -199,7 +192,7 @@ public class InputHandler {
 				oo.setState(state);
 			} else if (input.equalsIgnoreCase("create student")) {
 				if ((Config.testMode2==true)||(Config.testMode3==true)) {
-					output="Create Student";
+					output="Create Student\n";
 				}
 				output += "Please Input Student Info: 'student number, name, is fulltime(y/n)'";
 				state = CREATESTUDENT;
@@ -235,6 +228,7 @@ public class InputHandler {
 					output = "Please Input Student Info: 'student number, name, is fulltime(y/n)'"
 							+ "\n222222222, Will, y";
 				}
+
 				sccount++;
 				sccount2++;
 				oo.setOutput(output);
@@ -274,7 +268,9 @@ public class InputHandler {
 				oo.setState(state);
 			} else if (input.equalsIgnoreCase("delete student")) {
 				output += "What can I do for you? Menu: Create Course/Student, Delete Course/Student, Cancel Course, Dean's List.";
+				if ((Config.testMode == true)||(Config.testMode2 == true)||(Config.testMode3 == true)) {
 				output += "\nDelete Student";
+				}
 				output += "\nPlease Input Student Info: 'student number'\nAvailable Student List: ";
 				for (int i = 0; i < University.getInstance().Students().size(); i++) {
 					output = output + "\n" + University.getInstance().Students().get(i).toString();

@@ -395,7 +395,7 @@ public class ATClient implements Runnable {
 							}
 							if (countS3 == 9) {
 								try {
-									Thread.sleep(6000);
+									Thread.sleep(5000);
 								} catch (InterruptedException ex) {
 									Thread.currentThread().interrupt();
 								}
@@ -570,10 +570,40 @@ public class ATClient implements Runnable {
 								}
 								streamOut.write("123456" + "\n");
 							}
-							if (count11 == 40) {
+							if (count11 == 39) {
 								streamOut.write("" + "\n");
 							}
+							if (count11 == 40) {
+								streamOut.write("Create Student" + "\n");
+							}
 							if (count11 == 41) {
+								streamOut.write("333333333, Harry, y" + "\n");
+							}
+							if (count11 == 42) {
+								streamOut.write("" + "\n");
+							}
+							if (count11 == 43) {
+								streamOut.write("" + "\n");
+							}
+							if (count11 == 44) {
+								streamOut.write("Delete Student" + "\n");
+							}
+							if (count11 == 45) {
+								streamOut.write("111111111" + "\n");
+							}
+							if (count11 == 46) {
+								streamOut.write("" + "\n");
+							}
+							if (count11 == 47) {
+								streamOut.write("Cancel Course" + "\n");
+							}
+							if (count11 == 48) {
+								streamOut.write("123456" + "\n");
+							}
+							if (count11 == 49) {
+								streamOut.write("" + "\n");
+							}
+							if (count11 == 50) {
 								streamOut.write("Exit" + "\n");
 							}
 							count11++;
@@ -682,7 +712,7 @@ public class ATClient implements Runnable {
 								streamOut.write("" + "\n");
 							}
 							if (count12 == 31) {
-								streamOut.write("Register for Course" + "\n");
+								streamOut.write("select Course" + "\n");
 							}
 							if (count12 == 32) {
 								streamOut.write("234567" + "\n");
@@ -691,7 +721,7 @@ public class ATClient implements Runnable {
 								streamOut.write("" + "\n");
 							}
 							if (count12 == 34) {
-								streamOut.write("Drop Course" + "\n");
+								streamOut.write("Register for Course" + "\n");
 							}
 							if (count12 == 35) {
 								streamOut.write("234567" + "\n");
@@ -700,16 +730,16 @@ public class ATClient implements Runnable {
 								streamOut.write("" + "\n");
 							}
 							if (count12 == 37) {
-								streamOut.write("Select Course" + "\n");
+								streamOut.write("Drop Course" + "\n");
 							}
 							if (count12 == 38) {
-								streamOut.write("456789" + "\n");
+								streamOut.write("234567" + "\n");
 							}
 							if (count12 == 39) {
 								streamOut.write("" + "\n");
 							}
 							if (count12 == 40) {
-								streamOut.write("Register for Course" + "\n");
+								streamOut.write("Select Course" + "\n");
 							}
 							if (count12 == 41) {
 								streamOut.write("456789" + "\n");
@@ -718,6 +748,15 @@ public class ATClient implements Runnable {
 								streamOut.write("" + "\n");
 							}
 							if (count12 == 43) {
+								streamOut.write("Register for Course" + "\n");
+							}
+							if (count12 == 44) {
+								streamOut.write("456789" + "\n");
+							}
+							if (count12 == 45) {
+								streamOut.write("" + "\n");
+							}
+							if (count12 == 46) {
 								try {
 									Thread.sleep(6000);
 								} catch (InterruptedException ex) {
@@ -725,28 +764,28 @@ public class ATClient implements Runnable {
 								}
 								streamOut.write("Register for course" + "\n");
 							}
-							if (count12 == 44) {
-								streamOut.write("234567" + "\n");
-							}
-							if (count12 == 45) {
-								streamOut.write("" + "\n");
-							}
-							if (count12 == 46) {
-								streamOut.write("Deregister Course" + "\n");
-							}
 							if (count12 == 47) {
-								streamOut.write("456789" + "\n");
+								streamOut.write("234567" + "\n");
 							}
 							if (count12 == 48) {
-								streamOut.write("Drop Course" + "\n");
-							}
-							if (count12 == 49) {
-								streamOut.write("234567" + "\n");
-							}
-							if (count12 == 50) {
 								streamOut.write("" + "\n");
 							}
+							if (count12 == 49) {
+								streamOut.write("Deregister Course" + "\n");
+							}
+							if (count12 == 50) {
+								streamOut.write("456789" + "\n");
+							}
 							if (count12 == 51) {
+								streamOut.write("Drop Course" + "\n");
+							}
+							if (count12 == 52) {
+								streamOut.write("234567" + "\n");
+							}
+							if (count12 == 53) {
+								streamOut.write("" + "\n");
+							}
+							if (count12 == 54) {
 								try {
 									Thread.sleep(6000);
 								} catch (InterruptedException ex) {
@@ -754,13 +793,13 @@ public class ATClient implements Runnable {
 								}
 								streamOut.write("Drop Course" + "\n");
 							}
-							if (count12 == 52) {
+							if (count12 == 55) {
 								streamOut.write("456789" + "\n");
 							}
-							if (count12 == 53) {
+							if (count12 == 56) {
 								streamOut.write("" + "\n");
 							}
-							if (count12 == 54) {
+							if (count12 == 57) {
 								streamOut.write("Exit" + "\n");
 							}
 							count12++;

@@ -8,4 +8,3 @@ Feature: Clerk1
     Given I want to test a clerk logging in and out
 		Then Run the Clerk1 on test mode
 
-
