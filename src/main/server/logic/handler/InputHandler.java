@@ -66,7 +66,7 @@ public class InputHandler {
 					output += "Clerk";
 				}
 				output += "\nPlease Input The Password:";
-				if ((Config.testMode == true)||(Config.testMode2 == true)||(Config.testMode3 == true)) {
+				if ((Config.testMode == true)||(Config.testMode3 == true)) {
 					output += "\nadmin";
 				}
 				if (Config.testMode2 == true) {
