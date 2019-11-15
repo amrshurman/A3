@@ -317,7 +317,7 @@ public class InputHandler {
 				notavailableCourses.addAll(student.getCompletedCourses());
 				availableCourses.removeAll(notavailableCourses);
 				if (availableCourses.size() > 0) {
-					if ((Config.testMode == true)||(Config.testMode2 == true)) {
+					if ((Config.testMode == true)||(Config.testMode2 == true)||(Config.testMode3 == true)) {
 						output = "Select Course\n";
 					}
 					output += "Please Input Course Info: 'course code'\nAvailable Course List: ";
@@ -326,7 +326,7 @@ public class InputHandler {
 					}
 					state = SELECTCOURSE;
 				} else {
-					if (Config.testMode2==true) {
+					if ((Config.testMode2==true) ||(Config.testMode3==true)) {
 						output="Select Course\n";
 					}
 					output += "No Available Courses!";
@@ -348,7 +348,7 @@ public class InputHandler {
 			} else if (input.equalsIgnoreCase("register for course")) {
 				List<Course> availableCourses = new ArrayList<Course>(student.getSelectedCourses());
 				if (availableCourses.size() > 0) {
-					if ((Config.testMode == true)||Config.testMode2 == true) {
+					if ((Config.testMode == true)||(Config.testMode2 == true)||(Config.testMode3 == true)) {
 						output = "Register for Course\n";
 					}
 					output += "Please Input Course Info: 'course code'\nAvailable Course List: ";
@@ -357,7 +357,7 @@ public class InputHandler {
 					}
 					state = REGISTERFORCOURSE;
 				} else {
-					if (Config.testMode2==true) {
+					if ((Config.testMode2==true) ||(Config.testMode3==true)) {
 						output="Register for Course\n";
 					}
 					output += "No Available Courses!";
