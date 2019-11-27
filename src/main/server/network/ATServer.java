@@ -47,6 +47,9 @@ public class ATServer implements Runnable {
 		if (s.equals("test3")) {
 			Config.testMode3=true;
 			}
+		if (s.equals("4")) {
+			Config.a4=true;
+			}
 		try {
 			logger.info("Binding to port " + port);
 			clients = new HashMap<Integer, ServerThread>();
@@ -122,7 +125,7 @@ public class ATServer implements Runnable {
 			if(exist(from)){
 				//System.out.println("LOL");
 				int state=clientState(from);
-				so=handler.processInput(input,state);
+				so=handler.processInput(input,state,from);
 				output=so.getOutput()+"\n";
 				from.send(output);
 				clientSetState(from,so.getState());//System.out.println("1");
@@ -131,7 +134,7 @@ public class ATServer implements Runnable {
 				Config.clerkID++;
 				Client client=new Client(from,InputHandler.WAITING);
 				clientList.add(client);
-				so=handler.processInput(input,InputHandler.WAITING);
+				so=handler.processInput(input,InputHandler.WAITING,from);
 				output=so.getOutput()+"\n";
 				from.send(output);
 				clientSetState(from,so.getState());//System.out.println("2");

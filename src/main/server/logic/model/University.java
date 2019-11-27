@@ -12,7 +12,8 @@ import main.utilities.Trace;
 import org.apache.log4j.Logger;
 
 public class University implements UniversityInt {
-
+	ArrayList aQueue = new ArrayList();
+	ArrayList bQueue = new ArrayList();
 	private Logger logger = Trace.getInstance().getLogger("opreation_file");
 
 	static int universityCourses;
@@ -46,7 +47,6 @@ public class University implements UniversityInt {
 	public static final University getInstance() {
 		return UniversityHolder.INSTANCE;
 	}
-
 	public void Reset() {
 		Config.REGISTRATION_STARTS = false;
 		Config.REGISTRATION_ENDS = false;
@@ -63,7 +63,8 @@ public class University implements UniversityInt {
 		timer_registrationstarts = new Timer();
 		timer_registrationends = new Timer();
 		timer_termends = new Timer();
-		if ((Config.testMode == false)&&(Config.testMode2 == false)&&(Config.testMode3 == false)) {
+		if ((Config.testMode == false) && (Config.testMode2 == false) && (Config.testMode3 == false)
+				&& (Config.a4 == false)) {
 			timer_registrationstarts.schedule(new TimerTask() {
 
 				@Override
@@ -94,20 +95,22 @@ public class University implements UniversityInt {
 						University.getInstance().MarkStudents(University.getInstance().getCourses().get(i));
 					}
 					System.out.println("term ends");
-					for (int i=0;i<students.size();i++) {
-						for (int j=0;j<students.get(i).getRegisteredCourses().size();j++) {
-							System.out.println(students.get(i).getStudentName() + " with Student ID: " + students.get(i).getStudentNumber() + " has fulfilled course title: " + students.get(i).getRegisteredCourses().get(j).getTitle() + " with course code: "+ students.get(i).getRegisteredCourses().get(j).getMyCode());
+					for (int i = 0; i < students.size(); i++) {
+						for (int j = 0; j < students.get(i).getRegisteredCourses().size(); j++) {
+							System.out.println(students.get(i).getStudentName() + " with Student ID: "
+									+ students.get(i).getStudentNumber() + " has fulfilled course title: "
+									+ students.get(i).getRegisteredCourses().get(j).getTitle() + " with course code: "
+									+ students.get(i).getRegisteredCourses().get(j).getMyCode());
 						}
 					}
 				}
 			}, (20000 * 118));
-		}
-		else {
+		} else if (Config.a4 == false) {
 			timer_registrationstarts.schedule(new TimerTask() {
 				@Override
 				public void run() {
 					Config.REGISTRATION_STARTS = true;
-					System.out.println("registration starts"); 
+					System.out.println("registration starts");
 					// System.out.println(Config.SIMULATED_DAY);
 				}
 			}, (6000));
@@ -129,61 +132,112 @@ public class University implements UniversityInt {
 					// TODO Auto-generated method stub
 					Config.TERM_ENDS = true;
 					for (int i = 0; i < University.getInstance().getCourses().size(); i++) {
-					//	University.getInstance().MarkStudents(University.getInstance().getCourses().get(i));
+						// University.getInstance().MarkStudents(University.getInstance().getCourses().get(i));
 					}
 					System.out.println("term ends");
-					for (int i=0;i<students.size();i++) {
-						for (int j=0;j<students.get(i).getRegisteredCourses().size();j++) {
-							System.out.println(students.get(i).getStudentName() + " with Student ID: " + students.get(i).getStudentNumber() + " has fulfilled course title: " + students.get(i).getRegisteredCourses().get(j).getTitle() + " with course code: "+ students.get(i).getRegisteredCourses().get(j).getMyCode());
+					for (int i = 0; i < students.size(); i++) {
+						for (int j = 0; j < students.get(i).getRegisteredCourses().size(); j++) {
+							System.out.println(students.get(i).getStudentName() + " with Student ID: "
+									+ students.get(i).getStudentNumber() + " has fulfilled course title: "
+									+ students.get(i).getRegisteredCourses().get(j).getTitle() + " with course code: "
+									+ students.get(i).getRegisteredCourses().get(j).getMyCode());
 						}
 					}
-					//System.exit(1);
+					// System.exit(1);
 				}
 			}, (18000));
+		} else {
+			timer_registrationstarts.schedule(new TimerTask() {
+				@Override
+				public void run() {
+					Config.REGISTRATION_STARTS = true;
+					System.out.println("registration starts");
+					// System.out.println(Config.SIMULATED_DAY);
+				}
+			}, (0));
+
+			timer_registrationends.schedule(new TimerTask() {
+
+				@Override
+				public void run() {
+					// TODO Auto-generated method stub
+					Config.REGISTRATION_ENDS = true;
+					System.out.println("registration ends");
+					// System.out.println(Config.SIMULATED_DAY);
+				}
+			}, (10000));// System.out.println("test");
+			timer_termends.schedule(new TimerTask() {
+
+				@Override
+				public void run() {
+					// TODO Auto-generated method stub
+					Config.TERM_ENDS = true;
+					for (int i = 0; i < University.getInstance().getCourses().size(); i++) {
+						// University.getInstance().MarkStudents(University.getInstance().getCourses().get(i));
+					}
+					System.out.println("term ends");
+					for (int i = 0; i < students.size(); i++) {
+						for (int j = 0; j < students.get(i).getRegisteredCourses().size(); j++) {
+							System.out.println(students.get(i).getStudentName() + " with Student ID: "
+									+ students.get(i).getStudentNumber() + " has fulfilled course title: "
+									+ students.get(i).getRegisteredCourses().get(j).getTitle() + " with course code: "
+									+ students.get(i).getRegisteredCourses().get(j).getMyCode());
+						}
+					}
+					 System.exit(1);
+				}
+			}, (10500));
 		}
 	}
-	
+
 	public void passFail() {
-		for (int i=0;i<students.size();i++) {
-			for (int j=0;j<students.get(i).getRegisteredCourses().size();j++) {
-				if (getGrade(students.get(i).getRegisteredCourses().get(j))>=50) {
-					
+		for (int i = 0; i < students.size(); i++) {
+			for (int j = 0; j < students.get(i).getRegisteredCourses().size(); j++) {
+				if (getGrade(students.get(i).getRegisteredCourses().get(j)) >= 50) {
+
 				}
 			}
 		}
 	}
+
 	private int getGrade(Course c) {
 		return 0;
 	}
+
 	private void InitializeCourses() {
 		courses.clear();
-/*
-		ProjectCourse c1 = new ProjectCourse("OO Software Dev", 105104, 30, false, 0, 3, false);
-		ProjectCourse c2 = new ProjectCourse("Computational Geometry", 105008, 20, false, 0, 3, false);
-		Course c3 = new Course("Principles of Distributed Computing", 105003, 20, false, 1, 2, true);
-		Course c4 = new Course("Advanced Database Systems", 105305, 30, false, 2, 2, true);
-		Course c5 = new Course("Foundations of Programming Languages", 105001, 30, false, 1, 3, true);
-		courses.add(c1);
-		courses.add(c2);
-		courses.add(c3);
-		courses.add(c4);
-		courses.add(c5);
-		logger.info(String.format("University Operation: Initialize course list; courses: %s", courses));
-*/
+		if (Config.a4 == true) {
+			Course c1 = new Course("Principles of Distributed Computing", 456789, 20, false, 1, 2, true);
+			courses.add(c1);
+			Course c2 = new Course("Computational Geometry", 234567, 20, false, 1, 2, true);
+			courses.add(c2);
+		}
+		/*
+		 * ProjectCourse c1 = new ProjectCourse("OO Software Dev", 105104, 30, false, 0,
+		 * 3, false); ProjectCourse c2 = new ProjectCourse("Computational Geometry",
+		 * 105008, 20, false, 0, 3, false); Course c3 = new
+		 * Course("Principles of Distributed Computing", 105003, 20, false, 1, 2, true);
+		 * Course c4 = new Course("Advanced Database Systems", 105305, 30, false, 2, 2,
+		 * true); Course c5 = new Course("Foundations of Programming Languages", 105001,
+		 * 30, false, 1, 3, true); courses.add(c1); courses.add(c2); courses.add(c3);
+		 * courses.add(c4); courses.add(c5); logger.info(String.
+		 * format("University Operation: Initialize course list; courses: %s",
+		 * courses));
+		 */
 	}
 
 	private void InitializeStudents() {
 		students.clear();
-/*
-		int[] studentNumberList = new int[] { 101075401, 101075402 };
-		String[] studentNameList = new String[] { "tom", "jack" };
-		boolean[] isFullTimeList = new boolean[] { true, false };
-		for (int i = 0; i < studentNumberList.length; i++) {
-			Student s = new Student(studentNumberList[i], studentNameList[i], isFullTimeList[i]);
-			students.add(s);
+		if (Config.a4 == true) {
+			int[] studentNumberList = new int[] { 100996742, 222222222 };
+			String[] studentNameList = new String[] { "Amr", "Will" };
+			boolean[] isFullTimeList = new boolean[] { true, true };
+			for (int i = 0; i < studentNumberList.length; i++) {
+				Student s = new Student(studentNumberList[i], studentNameList[i], isFullTimeList[i]);
+				students.add(s);
+			}
+			logger.info(String.format("University Operation: Initialize student list; students: %s", students));
 		}
-		logger.info(String.format("University Operation: Initialize student list; students: %s", students));
-*/
 	}
 
 	public int getUniversityCourses() {
@@ -209,15 +263,23 @@ public class University implements UniversityInt {
 	public void setStudents(List<Student> students) {
 		this.students = students;
 	}
-
+	public void addQ(Student s) {
+		String st = String.valueOf(s.getStudentNumber());
+		//String is=  String.valueOf(i);
+		//String f = st + is;
+		int fi = Integer.parseInt(st);
+		aQueue.add(fi);
+	}
 	public int getCurrentstudent() {
-		return currentstudent;
+		int s =(int) aQueue.get(0);
+		//aQueue.remove(0);
+		return s;
 	}
 
 	public void setCurrentstudent(int currentstudent) {
+		aQueue.add(0,currentstudent);
 		University.currentstudent = currentstudent;
 	}
-
 	@Override
 	public List<Course> Courses() {
 		// TODO Auto-generated method stub
@@ -392,7 +454,7 @@ public class University implements UniversityInt {
 	public int RegisterStudentForCourse(Student student, Course course) {
 		// TODO Auto-generated method stub
 		boolean result = true;
-		int r=0;
+		int r = 0;
 		int flag1 = 0;
 		int flag2 = 0;
 		for (int i = 0; i < courses.size(); i++) {
@@ -414,13 +476,13 @@ public class University implements UniversityInt {
 				logger.info(String.format("University Operation: student %d register course %d; State: Success",
 						student.StudentNumber(), course.Code()));
 			} else {
-				r=2;
+				r = 2;
 				logger.info(String.format(
 						"University Operation: student %d register course %d; State: Fail; Reason: The course registered has reached the maximum number.",
 						student.StudentNumber(), course.Code()));
 			}
 		} else {
-			r=1;
+			r = 1;
 			result = false;
 			logger.info(String.format(
 					"University Operation: student %d register course %d; State: Fail; Reason: The student or course doesn't exist or the student hasn't selected the course.",
@@ -433,7 +495,7 @@ public class University implements UniversityInt {
 	public boolean DeRegisterStudentFromCourse(Student student, Course course) {
 		// TODO Auto-generated method stub
 		boolean result = true;
-		
+
 		if (CheckCourse(course.Code()) && CheckStudent(student.StudentNumber()) && student.IsRegistered(course)) {
 			result = student.DeRegisterCourse(course);
 			if (result) {

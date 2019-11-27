@@ -32,10 +32,15 @@ public class ATClient implements Runnable {
 	private int countS4 = 0;
 	private int count11 = 0;
 	private int count12 = 0;
-	private int count20=-1;
-	private int count21=-1;
-	private int count22=-1;
+	private int count20 = -1;
+	private int count21 = -1;
+	private int count22 = -1;
+	private int count41 = 0;
+	private int count42 = 0;
 	String type = "";
+	String serverName = "";
+	int serverPort = 0;
+	String s = "";
 
 	public ATClient(String serverName, int serverPort) {
 		System.out.println("Connecting to the server. Please wait ...");
@@ -60,6 +65,9 @@ public class ATClient implements Runnable {
 	}
 
 	public ATClient(String serverName, int serverPort, String s) {
+		this.serverName = serverName;
+		this.serverPort = serverPort;
+		this.s = s;
 		Config.testC1 = true;
 		type = s;
 		System.out.println("Connecting to the server. Please wait ...");
@@ -92,6 +100,7 @@ public class ATClient implements Runnable {
 
 	public void start() throws IOException {
 		try {
+			System.out.println(s);
 			console = new BufferedReader(new InputStreamReader(System.in));
 			streamIn = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 			streamOut = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
@@ -117,6 +126,66 @@ public class ATClient implements Runnable {
 					if (Config.testC1 == false) {
 						streamOut.write(console.readLine() + "\n");
 					} else {
+						if (type.equals("Student 1")) {
+							if (count41 == 0) {
+								streamOut.write("\n");
+							}
+							if (count41 == 1) {
+								streamOut.write("Student" + "\n");
+							}
+							if (count41 == 2) {
+								streamOut.write("222222222, Will" + "\n");
+							}
+							if (count41 == 3) {
+								streamOut.write("Select Course" + "\n");
+							}
+							if (count41 == 4) {
+								streamOut.write("456789" + "\n");
+							}
+							if (count41 == 5) {
+								streamOut.write("" + "\n");
+							}
+							if (count41 == 6) {
+								streamOut.write("Register for Course" + "\n");
+							}
+							if (count41 == 7) {
+								streamOut.write("456789" + "\n");
+							}
+							if (count41 == 8) {
+								streamOut.write("Exit" + "\n");
+							}
+							count41++;
+						}
+						if (type.equals("Student 2")) {
+							if (count42 == 0) {
+								streamOut.write("\n");
+							}
+							if (count42 == 1) {
+								streamOut.write("Student" + "\n");
+							}
+							if (count42 == 2) {
+								streamOut.write("100996742, Amr" + "\n");
+							}
+							if (count42 == 3) {
+								streamOut.write("Select Course" + "\n");
+							}
+							if (count42 == 4) {
+								streamOut.write("234567" + "\n");
+							}
+							if (count42 == 5) {
+								streamOut.write("" + "\n");
+							}
+							if (count42 == 6) {
+								streamOut.write("Register for Course" + "\n");
+							}
+							if (count42 == 7) {
+								streamOut.write("234567" + "\n");
+							}
+							if (count42 == 8) {
+								streamOut.write("Exit" + "\n");
+							}
+							count42++;
+						}
 						if (type.equals("1")) {
 							if (countC1 == 0) {
 								streamOut.write("\n");

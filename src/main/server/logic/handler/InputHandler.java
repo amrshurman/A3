@@ -8,6 +8,7 @@ import main.server.logic.handler.model.ServerOutput;
 import main.server.logic.model.Course;
 import main.server.logic.model.Student;
 import main.server.logic.model.University;
+import main.server.network.ServerThread;
 import main.utilities.Config;
 
 public class InputHandler {
@@ -42,7 +43,8 @@ public class InputHandler {
 	// private boolean switchAcc=false;
 	OutputHandler outputHandler = new OutputHandler();
 
-	public ServerOutput processInput(String input, int state) {
+	public ServerOutput processInput(String input, int state, ServerThread from) {
+		//System.out.println(from.getID());
 		String output = "";
 		Output o = new Output("", 0);
 		ServerOutput oo = new ServerOutput(output, o.getState());
@@ -56,6 +58,9 @@ public class InputHandler {
 					output+="\nStudent";
 				}
 				csc++;
+			}
+			if (Config.a4 == true) {
+				output+="\nStudent";
 			}
 			state = FINISHWAITING;
 			oo.setOutput(output);
@@ -148,7 +153,7 @@ public class InputHandler {
 			oo.setOutput(output);
 			oo.setState(state);
 		} else if (state == STUDENTLOGIN) {
-			o = outputHandler.studentLogin(input);
+			o = outputHandler.studentLogin(input, from);
 			output = o.getOutput();
 			state = o.getState();
 			oo.setOutput(output);
@@ -308,7 +313,7 @@ public class InputHandler {
 				oo.setState(state);
 			}
 		} else if (state == STUDENT) {
-			int studentnumber = University.getInstance().getCurrentstudent();
+			int studentnumber = from.stuNum;
 			Student student = (Student) University.getInstance().GetStudent(studentnumber);
 			if (input.equalsIgnoreCase("select course")) {
 				List<Course> availableCourses = new ArrayList<Course>(University.getInstance().Courses());
@@ -335,11 +340,19 @@ public class InputHandler {
 				if (Config.testMode == true && secount == 0) {
 					output += "\n456789";
 				}
-				if (Config.testMode == true && secount == 1) {
+				else if (Config.testMode == true && secount == 1) {
 					output += "\n987654";
 				}
-				if (Config.testMode == true && secount == 3) {
+				else if (Config.testMode == true && secount == 3) {
 					output += "\n234567";
+				}
+				else if (Config.a4 == true) {
+					if (from.stuNum==100996742) {
+						output += "\n234567";
+					}
+					if (from.stuNum==222222222) {
+						output += "\n456789";
+					}
 				}
 				// output+=secount;
 				secount++;
@@ -366,11 +379,19 @@ public class InputHandler {
 				if (Config.testMode == true && rcount == 0) {
 					output += "\n456789";
 				}
-				if (Config.testMode == true && rcount == 1) {
+				else if (Config.testMode == true && rcount == 1) {
 			//		output += "\n987654";
 				}
-				if (Config.testMode == true && rcount == 2) {
+				else if (Config.testMode == true && rcount == 2) {
 					output += "\n234567";
+				}
+				else if (Config.a4 == true) {
+					if (from.stuNum==100996742) {
+						output += "\n234567";
+					}
+					if (from.stuNum==222222222) {
+						output += "\n456789";
+					}
 				}
 				rcount++;
 				oo.setOutput(output);
@@ -548,7 +569,7 @@ public class InputHandler {
 				oo.setOutput(output);
 				oo.setState(state);
 			} else {
-				o = outputHandler.selectCourse(input);
+				o = outputHandler.selectCourse(input,from);
 				output = o.getOutput();
 				state = o.getState();
 				oo.setOutput(output);
@@ -569,7 +590,7 @@ public class InputHandler {
 				oo.setOutput(output);
 				oo.setState(state);
 			} else {
-				o = outputHandler.registerforCourse(input);
+				o = outputHandler.registerforCourse(input,from);
 				output = o.getOutput();
 				state = o.getState();
 				oo.setOutput(output);
