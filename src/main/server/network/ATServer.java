@@ -50,6 +50,12 @@ public class ATServer implements Runnable {
 		if (s.equals("4")) {
 			Config.a4=true;
 			}
+		if (s.equals("5")) {
+			Config.a42=true;
+			}
+		if (s.equals("6")) {
+			Config.a43=true;
+			}
 		try {
 			logger.info("Binding to port " + port);
 			clients = new HashMap<Integer, ServerThread>();
@@ -106,7 +112,7 @@ public class ATServer implements Runnable {
 		}
 	}
 	
-	public synchronized void handle(int ID, String input) {
+	public synchronized void handle(int ID, String input) {//System.out.println(clients.size());
 		if (input.equals("Exit")) 
 		{
 			logger.info(String.format("Client: %d Exits", ID));

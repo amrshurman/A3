@@ -22,17 +22,17 @@ public StartTerminals() {
 
 	public void run() {
 		try {
-			Thread.sleep(150);
+			Thread.sleep(200); 
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		new ATClient(Config.DEFAULT_HOST, Config.DEFAULT_PORT, threadName);
-		System.out.println(threadName + " Done.");
+		//System.out.println(threadName + " Done.");
 	}
 
 	public void start() {
-		System.out.println("Starting" + threadName);
+		//System.out.println("Starting" + threadName);
 		t = new Thread(this, threadName);
 		t.start();
 	//	  while(true) {

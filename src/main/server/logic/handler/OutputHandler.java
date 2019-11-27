@@ -47,7 +47,7 @@ public class OutputHandler {
 				output.setOutput("Welcome Clerk no." + Config.clerkID
 						+ "\nWhat can I do for you? Menu: Create Course/Student, Delete Course/Student, Cancel Course, Dean's List. \nDelete Student");
 			}
-			if (Config.testMode == true) {
+			if (Config.testMode == true) { 
 				clerk++;
 			}
 			output.setState(CLERK);
@@ -508,7 +508,6 @@ public class OutputHandler {
 		// Config.OVERDUE);
 		// int b = (int) ((current - StartServer.start) / (Config.SIMULATED_DAY) -
 		// Config.TERM_LASTS);
-
 		if (Config.TERM_ENDS) {
 			output.setOutput("Term ends!");
 			output.setState(STUDENT);
@@ -539,6 +538,7 @@ public class OutputHandler {
 				output.setState(REGISTERFORCOURSE);
 			} else {
 				int studentnumber = from.stuNum;
+				
 				Student student = University.getInstance().GetStudent(studentnumber);
 				Course course = University.getInstance().GetCourse(Integer.parseInt(code));
 				int r = University.getInstance().RegisterStudentForCourse(student, course);
@@ -630,7 +630,7 @@ public class OutputHandler {
 		return output;
 	}
 
-	public Output deregisterCourse(String input) {
+	public Output deregisterCourse(String input, ServerThread from) {
 		Output output = new Output("", 0);
 		String code = input.trim();
 		Pattern pattern = Pattern.compile("[0-9]*");
@@ -669,7 +669,7 @@ public class OutputHandler {
 				output.setOutput("The course does not exist!");
 				output.setState(DEREGISTERCOURSE);
 			} else {
-				int studentnumber = University.getInstance().getCurrentstudent();
+				int studentnumber = from.stuNum;
 				Student student = University.getInstance().GetStudent(studentnumber);
 				Course course = University.getInstance().GetCourse(Integer.parseInt(code));
 				result = University.getInstance().DeRegisterStudentFromCourse(student, course);

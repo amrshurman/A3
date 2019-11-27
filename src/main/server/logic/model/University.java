@@ -64,7 +64,7 @@ public class University implements UniversityInt {
 		timer_registrationends = new Timer();
 		timer_termends = new Timer();
 		if ((Config.testMode == false) && (Config.testMode2 == false) && (Config.testMode3 == false)
-				&& (Config.a4 == false)) {
+				&& (Config.a4 == false)&& (Config.a42 == false)&& (Config.a43 == false)) {
 			timer_registrationstarts.schedule(new TimerTask() {
 
 				@Override
@@ -105,7 +105,7 @@ public class University implements UniversityInt {
 					}
 				}
 			}, (20000 * 118));
-		} else if (Config.a4 == false) {
+		} else if ((Config.a4 == false)&&(Config.a42 == false)&& (Config.a43 == false)) {
 			timer_registrationstarts.schedule(new TimerTask() {
 				@Override
 				public void run() {
@@ -184,7 +184,7 @@ public class University implements UniversityInt {
 									+ students.get(i).getRegisteredCourses().get(j).getMyCode());
 						}
 					}
-					 System.exit(1);
+					// System.exit(1);
 				}
 			}, (10500));
 		}
@@ -211,6 +211,15 @@ public class University implements UniversityInt {
 			courses.add(c1);
 			Course c2 = new Course("Computational Geometry", 234567, 20, false, 1, 2, true);
 			courses.add(c2);
+			//System.out.println("LOL");
+		}
+		if (Config.a42 == true) {
+			Course c1 = new Course("Principles of Distributed Computing", 456789, 2, false, 2, 2, true);
+			courses.add(c1);
+		}
+		if (Config.a43 == true) {
+			Course c1 = new Course("Principles of Distributed Computing", 456789, 3, false, 2, 2, true);
+			courses.add(c1); 
 		}
 		/*
 		 * ProjectCourse c1 = new ProjectCourse("OO Software Dev", 105104, 30, false, 0,
@@ -232,6 +241,26 @@ public class University implements UniversityInt {
 			int[] studentNumberList = new int[] { 100996742, 222222222 };
 			String[] studentNameList = new String[] { "Amr", "Will" };
 			boolean[] isFullTimeList = new boolean[] { true, true };
+			for (int i = 0; i < studentNumberList.length; i++) {
+				Student s = new Student(studentNumberList[i], studentNameList[i], isFullTimeList[i]);
+				students.add(s);
+			}
+			logger.info(String.format("University Operation: Initialize student list; students: %s", students));
+		}
+		if (Config.a42 == true) {
+			int[] studentNumberList = new int[] { 100996742, 111111111, 222222222, 444444444 };
+			String[] studentNameList = new String[] { "Amr", "Tim","Jack", "Lindsay" };
+			boolean[] isFullTimeList = new boolean[] { true, true, true, true };
+			for (int i = 0; i < studentNumberList.length; i++) {
+				Student s = new Student(studentNumberList[i], studentNameList[i], isFullTimeList[i]);
+				students.add(s);
+			}
+			logger.info(String.format("University Operation: Initialize student list; students: %s", students));
+		}
+		if (Config.a43 == true) {
+			int[] studentNumberList = new int[] { 100996742, 222222222, 333333333, 444444444 };
+			String[] studentNameList = new String[] { "Amr", "Jack", "Sasha", "Lindsay" };
+			boolean[] isFullTimeList = new boolean[] { true, true, true, true };
 			for (int i = 0; i < studentNumberList.length; i++) {
 				Student s = new Student(studentNumberList[i], studentNameList[i], isFullTimeList[i]);
 				students.add(s);

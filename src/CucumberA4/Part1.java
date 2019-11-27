@@ -13,7 +13,7 @@ public class Part1 extends Thread{
 	public void i_want_to_test_if_two_students_can_register_assyncrounously() throws Throwable {
 		TestThread t = new TestThread();
 		String[] s= new String[0];
-		t.main(s);
+		t.main(s); 
 	}
 
 	@Then("^Run two students on test mode$")

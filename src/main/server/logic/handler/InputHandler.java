@@ -43,13 +43,13 @@ public class InputHandler {
 	// private boolean switchAcc=false;
 	OutputHandler outputHandler = new OutputHandler();
 
-	public ServerOutput processInput(String input, int state, ServerThread from) {
+	public ServerOutput processInput(String input, int state, ServerThread from) {//System.out.println(from.stuNum);System.out.println("thread " +from.getID());
 		//System.out.println(from.getID());
 		String output = "";
 		Output o = new Output("", 0);
 		ServerOutput oo = new ServerOutput(output, o.getState());
 		if (state == WAITING) {
-			output = "Who Are you? Clerk or Student?";
+			output = "Who Are you? Clerk or Student?"; 
 			if (Config.testMode2 == true) {
 				if (csc==0) {
 				output+="\nClerk";
@@ -346,14 +346,14 @@ public class InputHandler {
 				else if (Config.testMode == true && secount == 3) {
 					output += "\n234567";
 				}
-				else if (Config.a4 == true) {
+/*				else if (Config.a4 == true) {
 					if (from.stuNum==100996742) {
 						output += "\n234567";
 					}
 					if (from.stuNum==222222222) {
 						output += "\n456789";
 					}
-				}
+				}*/
 				// output+=secount;
 				secount++;
 				oo.setOutput(output);
@@ -385,14 +385,14 @@ public class InputHandler {
 				else if (Config.testMode == true && rcount == 2) {
 					output += "\n234567";
 				}
-				else if (Config.a4 == true) {
+/*				else if (Config.a4 == true) {
 					if (from.stuNum==100996742) {
 						output += "\n234567";
 					}
 					if (from.stuNum==222222222) {
 						output += "\n456789";
 					}
-				}
+				}*/
 				rcount++;
 				oo.setOutput(output);
 				oo.setState(state);
@@ -626,7 +626,7 @@ public class InputHandler {
 				oo.setOutput(output);
 				oo.setState(state);
 			} else {
-				o = outputHandler.deregisterCourse(input);
+				o = outputHandler.deregisterCourse(input, from);
 				output = o.getOutput();
 				state = o.getState();
 				oo.setOutput(output);

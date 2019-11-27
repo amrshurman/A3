@@ -37,6 +37,14 @@ public class ATClient implements Runnable {
 	private int count22 = -1;
 	private int count41 = 0;
 	private int count42 = 0;
+	private int count50 = 0;
+	private int count51 = 0;
+	private int count52 = 0;
+	private int count53 = 0;
+	private int count54 = 0;
+	private int count55 = 0;
+	private int count56 = 0;
+	private int count57 = 0;
 	String type = "";
 	String serverName = "";
 	int serverPort = 0;
@@ -152,7 +160,7 @@ public class ATClient implements Runnable {
 								streamOut.write("456789" + "\n");
 							}
 							if (count41 == 8) {
-								streamOut.write("Exit" + "\n");
+							//	streamOut.write("Exit" + "\n");
 							}
 							count41++;
 						}
@@ -182,9 +190,294 @@ public class ATClient implements Runnable {
 								streamOut.write("234567" + "\n");
 							}
 							if (count42 == 8) {
-								streamOut.write("Exit" + "\n");
+						//		streamOut.write("Exit" + "\n");
 							}
 							count42++;
+						}
+						if (type.equals("P2ex1 Student 4")) {
+							if (count50 == 0) {
+								streamOut.write("\n");
+							}
+							if (count50 == 1) {
+								streamOut.write("Student" + "\n");
+							}
+							if (count50 == 2) {
+								streamOut.write("444444444, Lindsay" + "\n");
+							}
+							if (count50 == 3) {
+								try {
+									Thread.sleep(1000);
+								} catch (InterruptedException ex) {
+									Thread.currentThread().interrupt();
+								}
+								streamOut.write("Select Course" + "\n");
+							}
+							if (count50 == 4) {
+								streamOut.write("456789" + "\n");
+							}
+							if (count50 == 5) {
+								streamOut.write("" + "\n");
+							}
+							if (count50 == 6) {
+								streamOut.write("Register for Course" + "\n");
+							}
+							if (count50 == 7) {
+								streamOut.write("456789" + "\n");
+							}
+							if (count50 == 8) {
+							//	streamOut.write("Exit" + "\n");
+							}
+							count50++;
+						}
+						if (type.equals("P2ex1 Student 1")) {
+							if (count51 == 0) {
+								streamOut.write("\n");
+							}
+							if (count51 == 1) {
+								streamOut.write("Student" + "\n");
+							}
+							if (count51 == 2) {
+								streamOut.write("100996742, Amr" + "\n");
+							}
+							if (count51 == 3) {
+								try {
+									Thread.sleep(800);
+								} catch (InterruptedException ex) {
+									Thread.currentThread().interrupt();
+								}
+								streamOut.write("Select Course" + "\n");
+							}
+							if (count51 == 4) {
+								streamOut.write("456789" + "\n");
+							}
+							if (count51 == 5) {
+								streamOut.write("" + "\n");
+							}
+							if (count51 == 6) {
+								streamOut.write("Register for Course" + "\n");
+							}
+							if (count51 == 7) {
+								streamOut.write("456789" + "\n");
+							}
+							if (count51 == 8) {
+							//	streamOut.write("Exit" + "\n");
+							}
+							count51++;
+						}
+						if (type.equals("P2ex1 Student 2")) {
+							if (count52 == 0) {
+								streamOut.write("\n");
+							}
+							if (count52 == 1) {
+								streamOut.write("Student" + "\n");
+							}
+							if (count52 == 2) {
+								streamOut.write("111111111, Tim" + "\n");
+							}
+							if (count52 == 3) {
+								try {
+									Thread.sleep(1000);
+								} catch (InterruptedException ex) {
+									Thread.currentThread().interrupt();
+								}
+								streamOut.write("Select Course" + "\n");
+							}
+							if (count52 == 4) {
+								streamOut.write("456789" + "\n");
+							}
+							if (count52 == 5) {
+								streamOut.write("" + "\n");
+							}
+							if (count52 == 6) {
+								streamOut.write("Register for Course" + "\n");
+							}
+							if (count52 == 7) {
+								streamOut.write("456789" + "\n");
+							}
+							if (count52 == 8) {
+								//streamOut.write("Exit" + "\n");
+							}
+							count52++;
+						}
+						if (type.equals("P2ex1 Student 3")) {
+							if (count53 == 0) {
+								streamOut.write("\n");
+							}
+							if (count53 == 1) {
+								streamOut.write("Student" + "\n");
+							}
+							if (count53 == 2) {
+								streamOut.write("222222222, Jack" + "\n");
+							}
+							if (count53 == 3) {
+								try {
+									Thread.sleep(1000);
+								} catch (InterruptedException ex) {
+									Thread.currentThread().interrupt();
+								}
+								streamOut.write("Select Course" + "\n");
+							}
+							if (count53 == 4) {
+								streamOut.write("456789" + "\n");
+							}
+							if (count53 == 5) {
+								streamOut.write("" + "\n");
+							}
+							if (count53 == 6) {
+								streamOut.write("Register for Course" + "\n");
+							}
+							if (count53 == 7) {
+								streamOut.write("456789" + "\n");
+							}
+							if (count53 == 8) {
+								//streamOut.write("Exit" + "\n");
+							}
+							count53++;
+						}
+						if (type.equals("P2ex2 Student 1")) {
+							if (count54 == 0) {
+								streamOut.write("\n");
+							}
+							if (count54 == 1) {
+								streamOut.write("Student" + "\n");
+							}
+							if (count54 == 2) {
+								streamOut.write("100996742, Amr" + "\n");
+							}
+							if (count54 == 3) { 
+								streamOut.write("Select Course" + "\n");
+							}
+							if (count54 == 4) {
+								streamOut.write("456789" + "\n");
+							}
+							if (count54 == 5) {
+								streamOut.write("" + "\n");
+							}
+							if (count54 == 6) {
+								streamOut.write("Register for Course" + "\n");
+							}
+							if (count54 == 7) {
+								streamOut.write("456789" + "\n");
+							}
+							if (count54 == 8) {
+					//			streamOut.write("Exit" + "\n");
+							}
+							count54++;
+						}
+						if (type.equals("P2ex2 Student 2")) {
+							if (count55 == 0) {
+								streamOut.write("\n");
+							}
+							if (count55 == 1) {
+								streamOut.write("Student" + "\n");
+							}
+							if (count55 == 2) {
+								streamOut.write("222222222, Jack" + "\n");
+							}
+							if (count55 == 3) {
+								streamOut.write("Select Course" + "\n");
+							}
+							if (count55 == 4) {
+								streamOut.write("456789" + "\n");
+							}
+							if (count55 == 5) {
+								streamOut.write("" + "\n");
+							}
+							if (count55 == 6) {
+								streamOut.write("Register for Course" + "\n");
+							}
+							if (count55 == 7) {
+								streamOut.write("456789" + "\n");
+							}
+							if (count55 == 8) {
+								streamOut.write("" + "\n");
+							}
+							if (count55 == 9) {
+								int rand = (int)(Math.random() * 19) + 1; 
+								try {
+									Thread.sleep(994+rand); 
+								} catch (InterruptedException ex) {
+									Thread.currentThread().interrupt();
+								}
+								streamOut.write("Deregister Course" + "\n");
+							}
+							if (count55 == 10) {
+								streamOut.write("456789" + "\n");
+							}
+							if (count55 == 11) {
+						//		streamOut.write("Exit" + "\n");
+							}
+							count55++;
+						}
+						if (type.equals("P2ex2 Student 3")) {
+							if (count56 == 0) {
+								streamOut.write("\n");
+							}
+							if (count56 == 1) {
+								streamOut.write("Student" + "\n");
+							}
+							if (count56 == 2) {
+								streamOut.write("333333333, Sasha" + "\n");
+							}
+							if (count56 == 3) {
+								try {
+									Thread.sleep(1000);
+								} catch (InterruptedException ex) {
+									Thread.currentThread().interrupt();
+								}
+								streamOut.write("Select Course" + "\n");
+							}
+							if (count56 == 4) {
+								streamOut.write("456789" + "\n");
+							}
+							if (count56 == 5) {
+								streamOut.write("" + "\n");
+							}
+							if (count56 == 6) {
+								streamOut.write("Register for Course" + "\n");
+							}
+							if (count56 == 7) {
+								streamOut.write("456789" + "\n");
+							}
+							if (count56 == 8) {
+						//		streamOut.write("Exit" + "\n");
+							}
+							count56++;
+						}
+						if (type.equals("P2ex2 Student 4")) {
+							if (count57 == 0) {
+								streamOut.write("\n");
+							}
+							if (count57 == 1) {
+								streamOut.write("Student" + "\n");
+							}
+							if (count57 == 2) {
+								streamOut.write("444444444, Lindsay" + "\n");
+							}
+							if (count57 == 3) {
+								try {
+									Thread.sleep(1000);
+								} catch (InterruptedException ex) {
+									Thread.currentThread().interrupt();
+								}
+								streamOut.write("Select Course" + "\n");
+							}
+							if (count57 == 4) {
+								streamOut.write("456789" + "\n");
+							}
+							if (count57 == 5) {
+								streamOut.write("" + "\n");
+							}
+							if (count57 == 6) {
+								streamOut.write("Register for Course" + "\n");
+							}
+							if (count57 == 7) {
+								streamOut.write("456789" + "\n");
+							}
+							if (count57 == 8) {
+						//		streamOut.write("Exit" + "\n");
+							}
+							count57++;
 						}
 						if (type.equals("1")) {
 							if (countC1 == 0) {

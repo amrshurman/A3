@@ -20,7 +20,7 @@ public class ServerThread extends Thread {
 	private BufferedWriter streamOut = null;
 	private Logger logger = Trace.getInstance().getLogger(this);
 	private String clientAddress = null;;
-    public int stuNum;
+    public int stuNum; 
 	private boolean done = false;
 	
 	public ServerThread(ATServer server, Socket socket) {
