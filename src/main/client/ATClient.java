@@ -97,8 +97,19 @@ public class ATClient implements Runnable {
 			logger.info(String.format("Class: %-12s: %s", this.getClass().getSimpleName(), message));
 			System.out.println("Fail to connect to the server,please try later!");
 		}
-		while (true) {
+		if ((type.equals("P2ex1 Student2 1") == false) && (type.equals("P2ex1 Student2 2") == false)
+				&& (type.equals("P2ex1 Student2 3") == false) && (type.equals("P2ex1 Student2 4") == false)
+				&& (type.equals("P2ex2 Student2 1") == false) && (type.equals("P2ex2 Student2 2") == false)
+				&& (type.equals("P2ex2 Student2 3") == false) && (type.equals("P2ex2 Student2 4") == false)) {
+			while (true) {
 
+			}
+		} else {
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException ex) {
+				Thread.currentThread().interrupt();
+			}
 		}
 	}
 
@@ -160,7 +171,7 @@ public class ATClient implements Runnable {
 								streamOut.write("456789" + "\n");
 							}
 							if (count41 == 8) {
-							//	streamOut.write("Exit" + "\n");
+								// streamOut.write("Exit" + "\n");
 							}
 							count41++;
 						}
@@ -190,11 +201,11 @@ public class ATClient implements Runnable {
 								streamOut.write("234567" + "\n");
 							}
 							if (count42 == 8) {
-						//		streamOut.write("Exit" + "\n");
+								// streamOut.write("Exit" + "\n");
 							}
 							count42++;
 						}
-						if (type.equals("P2ex1 Student 4")) {
+						if ((type.equals("P2ex1 Student 4")) || type.equals(("P2ex1 Student2 4"))) {
 							if (count50 == 0) {
 								streamOut.write("\n");
 							}
@@ -225,11 +236,11 @@ public class ATClient implements Runnable {
 								streamOut.write("456789" + "\n");
 							}
 							if (count50 == 8) {
-							//	streamOut.write("Exit" + "\n");
+								// streamOut.write("Exit" + "\n");
 							}
 							count50++;
 						}
-						if (type.equals("P2ex1 Student 1")) {
+						if ((type.equals("P2ex1 Student 1")) || (type.equals(("P2ex1 Student2 1")))) {
 							if (count51 == 0) {
 								streamOut.write("\n");
 							}
@@ -260,11 +271,11 @@ public class ATClient implements Runnable {
 								streamOut.write("456789" + "\n");
 							}
 							if (count51 == 8) {
-							//	streamOut.write("Exit" + "\n");
+								// streamOut.write("Exit" + "\n");
 							}
 							count51++;
 						}
-						if (type.equals("P2ex1 Student 2")) {
+						if ((type.equals("P2ex1 Student 2")) || type.equals(("P2ex1 Student2 2"))) {
 							if (count52 == 0) {
 								streamOut.write("\n");
 							}
@@ -295,11 +306,11 @@ public class ATClient implements Runnable {
 								streamOut.write("456789" + "\n");
 							}
 							if (count52 == 8) {
-								//streamOut.write("Exit" + "\n");
+								// streamOut.write("Exit" + "\n");
 							}
 							count52++;
 						}
-						if (type.equals("P2ex1 Student 3")) {
+						if ((type.equals("P2ex1 Student 3")) || type.equals(("P2ex1 Student2 3"))) {
 							if (count53 == 0) {
 								streamOut.write("\n");
 							}
@@ -330,11 +341,11 @@ public class ATClient implements Runnable {
 								streamOut.write("456789" + "\n");
 							}
 							if (count53 == 8) {
-								//streamOut.write("Exit" + "\n");
+								// streamOut.write("Exit" + "\n");
 							}
 							count53++;
 						}
-						if (type.equals("P2ex2 Student 1")) {
+						if ((type.equals("P2ex2 Student 1")) || (type.equals("P2ex2 Student2 1"))) {
 							if (count54 == 0) {
 								streamOut.write("\n");
 							}
@@ -344,7 +355,7 @@ public class ATClient implements Runnable {
 							if (count54 == 2) {
 								streamOut.write("100996742, Amr" + "\n");
 							}
-							if (count54 == 3) { 
+							if (count54 == 3) {
 								streamOut.write("Select Course" + "\n");
 							}
 							if (count54 == 4) {
@@ -360,11 +371,11 @@ public class ATClient implements Runnable {
 								streamOut.write("456789" + "\n");
 							}
 							if (count54 == 8) {
-					//			streamOut.write("Exit" + "\n");
+								// streamOut.write("Exit" + "\n");
 							}
 							count54++;
 						}
-						if (type.equals("P2ex2 Student 2")) {
+						if ((type.equals("P2ex2 Student 2")) || (type.equals("P2ex2 Student2 2"))) {
 							if (count55 == 0) {
 								streamOut.write("\n");
 							}
@@ -393,11 +404,20 @@ public class ATClient implements Runnable {
 								streamOut.write("" + "\n");
 							}
 							if (count55 == 9) {
-								int rand = (int)(Math.random() * 19) + 1; 
-								try {
-									Thread.sleep(994+rand); 
-								} catch (InterruptedException ex) {
-									Thread.currentThread().interrupt();
+								if (type.equals("P2ex2 Student 2") == true) {
+									int rand = (int) (Math.random() * 19) + 1;
+									try {
+										Thread.sleep(994 + rand);
+									} catch (InterruptedException ex) {
+										Thread.currentThread().interrupt();
+									}
+								} else {
+									int rand = (int) (Math.random() * 12) + 0;
+									try {
+										Thread.sleep(500);
+									} catch (InterruptedException ex) {
+										Thread.currentThread().interrupt();
+									}
 								}
 								streamOut.write("Deregister Course" + "\n");
 							}
@@ -405,11 +425,11 @@ public class ATClient implements Runnable {
 								streamOut.write("456789" + "\n");
 							}
 							if (count55 == 11) {
-						//		streamOut.write("Exit" + "\n");
+								// streamOut.write("Exit" + "\n");
 							}
 							count55++;
 						}
-						if (type.equals("P2ex2 Student 3")) {
+						if ((type.equals("P2ex2 Student 3") || (type.equals("P2ex2 Student2 3")))) {
 							if (count56 == 0) {
 								streamOut.write("\n");
 							}
@@ -420,12 +440,22 @@ public class ATClient implements Runnable {
 								streamOut.write("333333333, Sasha" + "\n");
 							}
 							if (count56 == 3) {
-								try {
-									Thread.sleep(1000);
-								} catch (InterruptedException ex) {
-									Thread.currentThread().interrupt();
+								if (type.equals("P2ex2 Student 3") == true) {
+									try {
+										Thread.sleep(1000);
+									} catch (InterruptedException ex) {
+										Thread.currentThread().interrupt();
+									}
+									streamOut.write("Select Course" + "\n");
 								}
-								streamOut.write("Select Course" + "\n");
+								else {
+									try {
+										Thread.sleep(500);
+									} catch (InterruptedException ex) {
+										Thread.currentThread().interrupt();
+									}
+									streamOut.write("Select Course" + "\n");
+								}
 							}
 							if (count56 == 4) {
 								streamOut.write("456789" + "\n");
@@ -440,11 +470,11 @@ public class ATClient implements Runnable {
 								streamOut.write("456789" + "\n");
 							}
 							if (count56 == 8) {
-						//		streamOut.write("Exit" + "\n");
+								// streamOut.write("Exit" + "\n");
 							}
 							count56++;
 						}
-						if (type.equals("P2ex2 Student 4")) {
+						if ((type.equals("P2ex2 Student 4") || (type.equals("P2ex2 Student2 4")))) {
 							if (count57 == 0) {
 								streamOut.write("\n");
 							}
@@ -455,10 +485,19 @@ public class ATClient implements Runnable {
 								streamOut.write("444444444, Lindsay" + "\n");
 							}
 							if (count57 == 3) {
+								if (type.equals("P2ex2 Student 4") == true) {
 								try {
 									Thread.sleep(1000);
 								} catch (InterruptedException ex) {
 									Thread.currentThread().interrupt();
+								}
+								}
+								else {
+									try {
+										Thread.sleep(500);
+									} catch (InterruptedException ex) {
+										Thread.currentThread().interrupt();
+									}
 								}
 								streamOut.write("Select Course" + "\n");
 							}
@@ -475,7 +514,7 @@ public class ATClient implements Runnable {
 								streamOut.write("456789" + "\n");
 							}
 							if (count57 == 8) {
-						//		streamOut.write("Exit" + "\n");
+								// streamOut.write("Exit" + "\n");
 							}
 							count57++;
 						}

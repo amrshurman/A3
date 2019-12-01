@@ -12,8 +12,7 @@ import main.utilities.Trace;
 import org.apache.log4j.Logger;
 
 public class University implements UniversityInt {
-	ArrayList aQueue = new ArrayList();
-	ArrayList bQueue = new ArrayList();
+
 	private Logger logger = Trace.getInstance().getLogger("opreation_file");
 
 	static int universityCourses;
@@ -146,7 +145,51 @@ public class University implements UniversityInt {
 					// System.exit(1);
 				}
 			}, (18000));
-		} else {
+		}
+		else if ((Config.a44==true)||(Config.a45==true)){
+			Config.REGISTRATION_STARTS = true;
+			timer_registrationstarts.schedule(new TimerTask() {
+				@Override
+				public void run() {
+					Config.REGISTRATION_STARTS = true;
+					System.out.println("registration starts");
+					// System.out.println(Config.SIMULATED_DAY);
+				}
+			}, (0));
+
+			timer_registrationends.schedule(new TimerTask() {
+
+				@Override
+				public void run() {
+					// TODO Auto-generated method stub
+					Config.REGISTRATION_ENDS = true;
+					System.out.println("registration ends");
+					// System.out.println(Config.SIMULATED_DAY);
+				}
+			}, (1000));// System.out.println("test");
+			timer_termends.schedule(new TimerTask() {
+
+				@Override
+				public void run() {
+					// TODO Auto-generated method stub
+					Config.TERM_ENDS = true;
+					for (int i = 0; i < University.getInstance().getCourses().size(); i++) {
+						// University.getInstance().MarkStudents(University.getInstance().getCourses().get(i));
+					}
+					System.out.println("term ends");
+					for (int i = 0; i < students.size(); i++) {
+						for (int j = 0; j < students.get(i).getRegisteredCourses().size(); j++) {
+							System.out.println(students.get(i).getStudentName() + " with Student ID: "
+									+ students.get(i).getStudentNumber() + " has fulfilled course title: "
+									+ students.get(i).getRegisteredCourses().get(j).getTitle() + " with course code: "
+									+ students.get(i).getRegisteredCourses().get(j).getMyCode());
+						}
+					}
+					// System.exit(1);
+				}
+			}, (1500));
+		}
+		else {
 			timer_registrationstarts.schedule(new TimerTask() {
 				@Override
 				public void run() {
@@ -213,11 +256,11 @@ public class University implements UniversityInt {
 			courses.add(c2);
 			//System.out.println("LOL");
 		}
-		if (Config.a42 == true) {
+		if ((Config.a42 == true)||(Config.a44 == true)) {
 			Course c1 = new Course("Principles of Distributed Computing", 456789, 2, false, 2, 2, true);
 			courses.add(c1);
 		}
-		if (Config.a43 == true) {
+		if ((Config.a43 == true)||(Config.a45 == true)) {
 			Course c1 = new Course("Principles of Distributed Computing", 456789, 3, false, 2, 2, true);
 			courses.add(c1); 
 		}
@@ -247,7 +290,7 @@ public class University implements UniversityInt {
 			}
 			logger.info(String.format("University Operation: Initialize student list; students: %s", students));
 		}
-		if (Config.a42 == true) {
+		if ((Config.a42 == true)||(Config.a44 == true)) {
 			int[] studentNumberList = new int[] { 100996742, 111111111, 222222222, 444444444 };
 			String[] studentNameList = new String[] { "Amr", "Tim","Jack", "Lindsay" };
 			boolean[] isFullTimeList = new boolean[] { true, true, true, true };
@@ -257,7 +300,7 @@ public class University implements UniversityInt {
 			}
 			logger.info(String.format("University Operation: Initialize student list; students: %s", students));
 		}
-		if (Config.a43 == true) {
+		if ((Config.a43 == true)||(Config.a45 == true)) {
 			int[] studentNumberList = new int[] { 100996742, 222222222, 333333333, 444444444 };
 			String[] studentNameList = new String[] { "Amr", "Jack", "Sasha", "Lindsay" };
 			boolean[] isFullTimeList = new boolean[] { true, true, true, true };
@@ -291,23 +334,6 @@ public class University implements UniversityInt {
 
 	public void setStudents(List<Student> students) {
 		this.students = students;
-	}
-	public void addQ(Student s) {
-		String st = String.valueOf(s.getStudentNumber());
-		//String is=  String.valueOf(i);
-		//String f = st + is;
-		int fi = Integer.parseInt(st);
-		aQueue.add(fi);
-	}
-	public int getCurrentstudent() {
-		int s =(int) aQueue.get(0);
-		//aQueue.remove(0);
-		return s;
-	}
-
-	public void setCurrentstudent(int currentstudent) {
-		aQueue.add(0,currentstudent);
-		University.currentstudent = currentstudent;
 	}
 	@Override
 	public List<Course> Courses() {

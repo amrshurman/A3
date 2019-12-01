@@ -15,7 +15,7 @@ public StartTerminals() {
 	public static void main(String[] args) {
 		if (args == null || (args.length == 0)) {
 			new ATClient(Config.DEFAULT_HOST, Config.DEFAULT_PORT);
-		} else {
+		} else {//System.out.println("LOL");
 			new ATClient(Config.DEFAULT_HOST, Config.DEFAULT_PORT, args[0]);
 		}
 	}
@@ -35,9 +35,7 @@ public StartTerminals() {
 		//System.out.println("Starting" + threadName);
 		t = new Thread(this, threadName);
 		t.start();
-	//	  while(true) {
-      		
-	  //       }
+
 	}
 	
 }

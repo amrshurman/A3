@@ -608,7 +608,7 @@ public class InputHandler {
 				oo.setOutput(output);
 				oo.setState(state);
 			} else {
-				o = outputHandler.dropCourse(input);
+				o = outputHandler.dropCourse(input,from);
 				output = o.getOutput();
 				state = o.getState();
 				oo.setOutput(output);

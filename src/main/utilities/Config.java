@@ -24,4 +24,6 @@ public class Config {
 	public static boolean a4=false;
 	public static boolean a42=false;
 	public static boolean a43=false;
+	public static boolean a44=false;
+	public static boolean a45=false;
 }

@@ -575,7 +575,7 @@ public class OutputHandler {
 		return output;
 	}
 
-	public Output dropCourse(String input) {
+	public Output dropCourse(String input, ServerThread from) {
 		Output output = new Output("", 0);
 		String code = input.trim();
 		Pattern pattern = Pattern.compile("[0-9]*");
@@ -611,7 +611,7 @@ public class OutputHandler {
 			output.setOutput("The course does not exist!");
 			output.setState(DROPCOURSE);
 		} else {
-			int studentnumber = University.getInstance().getCurrentstudent();
+			int studentnumber = from.stuNum;
 			Student student = (Student) University.getInstance().GetStudent(studentnumber);
 			result = student.DropCourse(University.getInstance().GetCourse(Integer.parseInt(code)));
 			if (result) {
