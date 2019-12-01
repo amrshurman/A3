@@ -322,6 +322,12 @@ public class InputHandler {
 				notavailableCourses.addAll(student.getCompletedCourses());
 				availableCourses.removeAll(notavailableCourses);
 				if (availableCourses.size() > 0) {
+					if ((Config.a42 == true) || (Config.a44 == true)) {
+						output += "Select Course\n";
+					}
+					if ((Config.a43 == true) || (Config.a45 == true)) {
+						output += "Select Course\n";
+					}
 					if ((Config.testMode == true)||(Config.testMode2 == true)||(Config.testMode3 == true)) {
 						output = "Select Course\n";
 					}
@@ -346,6 +352,7 @@ public class InputHandler {
 				else if (Config.testMode == true && secount == 3) {
 					output += "\n234567";
 				}
+
 /*				else if (Config.a4 == true) {
 					if (from.stuNum==100996742) {
 						output += "\n234567";
@@ -360,6 +367,12 @@ public class InputHandler {
 				oo.setState(state);
 			} else if (input.equalsIgnoreCase("register for course")) {
 				List<Course> availableCourses = new ArrayList<Course>(student.getSelectedCourses());
+				if ((Config.a42 == true) || (Config.a44 == true)) {
+					output += "Register Course\n";
+				}
+				if ((Config.a43 == true) || (Config.a45 == true)) {
+					output += "Register Course\n";
+				}
 				if (availableCourses.size() > 0) {
 					if ((Config.testMode == true)||(Config.testMode2 == true)||(Config.testMode3 == true)) {
 						output = "Register for Course\n";
@@ -385,6 +398,7 @@ public class InputHandler {
 				else if (Config.testMode == true && rcount == 2) {
 					output += "\n234567";
 				}
+
 /*				else if (Config.a4 == true) {
 					if (from.stuNum==100996742) {
 						output += "\n234567";
@@ -422,6 +436,12 @@ public class InputHandler {
 			} else if (input.equalsIgnoreCase("deregister course")) {
 				List<Course> availableCourses = new ArrayList<Course>(student.getRegisteredCourses());
 				if (availableCourses.size() > 0) {
+					if ((Config.a42 == true) || (Config.a44 == true)) {
+						output += "Deregister Course\n";
+					}
+					if ((Config.a43 == true) || (Config.a45 == true)) {
+						output += "Deregister Course\n";
+					}
 					if ((Config.testMode == true) || (Config.testMode2==true)) {
 						//output = "Please select from the menu. Menu: Select Course, Register for Course, Drop Course, Deregister Course.";
 						output += "Deregister Course\n";

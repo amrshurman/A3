@@ -5,7 +5,7 @@
   <version>0.0.1-SNAPSHOT</version>
   <build>
     <sourceDirectory>src</sourceDirectory>
-   
+
     <plugins>
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
@@ -105,13 +105,13 @@
 		        <!-- Mandatory -->
 		        <!-- List of package names to scan for glue code. -->
 		        <glue>
-		          <package>test.java.cucumberParallelScenario</package>
+		          <package>CucumberA4P3.classes</package>
 		        </glue>
 		        <!-- These are optional, with the default values -->
 		        <!-- Where to output the generated tests -->
-		        <outputDirectory>src/</outputDirectory>
+		        <outputDirectory>src/CucumberA4P3/generators/</outputDirectory>
 		        <!-- The directory, which must be in the root of the runtime classpath, containing your feature files.  -->
-		        <featuresDirectory>src/test/java/cucumberParallelScenario/</featuresDirectory>
+		        <featuresDirectory>src/CucumberA4P3/features/</featuresDirectory>
 		        <!-- Directory where the cucumber report files shall be written  -->
 <!-- 	        		<cucumberOutputDir>target/cucumber-parallel/</cucumberOutputDir>  -->
 		        		<cucumberOutputDir>target</cucumberOutputDir>
@@ -148,7 +148,7 @@
 		  </executions>
 		</plugin> 
     </plugins>
-    
+
   </build>
   <dependencies>
   	<dependency>

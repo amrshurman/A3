@@ -33,6 +33,7 @@ public class OutputHandler {
 	int cci = 0;
 	int si = 0;
 	int ri = 0;
+
 	public Output clerkLogin(String input) {
 		Output output = new Output("", 0);
 		if (input.equalsIgnoreCase(Config.CLERK_PASSWORD)) {// System.out.println(input + Config.clerkID);
@@ -47,7 +48,7 @@ public class OutputHandler {
 				output.setOutput("Welcome Clerk no." + Config.clerkID
 						+ "\nWhat can I do for you? Menu: Create Course/Student, Delete Course/Student, Cancel Course, Dean's List. \nDelete Student");
 			}
-			if (Config.testMode == true) { 
+			if (Config.testMode == true) {
 				clerk++;
 			}
 			output.setState(CLERK);
@@ -61,7 +62,7 @@ public class OutputHandler {
 		return output;
 	}
 
-	public Output studentLogin(String input,ServerThread from) {
+	public Output studentLogin(String input, ServerThread from) {
 		Output output = new Output("", 0);
 		String[] strArray = null;
 		strArray = input.split(",");
@@ -88,7 +89,43 @@ public class OutputHandler {
 				if (result) {
 					output.setOutput(
 							"What can I do for you? Menu: Select Course, Register for Course, Drop Course, Deregister Course.");
-					from.stuNum=Integer.parseInt(number);
+					from.stuNum = Integer.parseInt(number);
+					if ((Config.a43 == true) || (Config.a45 == true)) {
+						if (from.stuNum == 100996742) {
+							output.setOutput(
+									"100996742, Amr\nWhat can I do for you? Menu: Select Course, Register for Course, Drop Course, Deregister Course.");
+						}
+						if (from.stuNum == 222222222) {
+							output.setOutput(
+									"222222222, Jack\nWhat can I do for you? Menu: Select Course, Register for Course, Drop Course, Deregister Course.");
+						}
+						if (from.stuNum == 333333333) {
+							output.setOutput(
+									"333333333, Sasha\nWhat can I do for you? Menu: Select Course, Register for Course, Drop Course, Deregister Course.");
+						}
+						if (from.stuNum == 444444444) {
+							output.setOutput(
+									"444444444, Lindsay\nWhat can I do for you? Menu: Select Course, Register for Course, Drop Course, Deregister Course.");
+						}
+					}
+					if ((Config.a42 == true) || (Config.a44 == true)) {
+						if (from.stuNum == 100996742) {
+							output.setOutput(
+									"100996742, Amr\nWhat can I do for you? Menu: Select Course, Register for Course, Drop Course, Deregister Course.");
+						}
+						if (from.stuNum == 111111111) {
+							output.setOutput(
+									"111111111, Tim\nWhat can I do for you? Menu: Select Course, Register for Course, Drop Course, Deregister Course.");
+						}
+						if (from.stuNum == 333333333) {
+							output.setOutput(
+									"222222222, Jack\nWhat can I do for you? Menu: Select Course, Register for Course, Drop Course, Deregister Course.");
+						}
+						if (from.stuNum == 444444444) {
+							output.setOutput(
+									"444444444, Lindsay\nWhat can I do for you? Menu: Select Course, Register for Course, Drop Course, Deregister Course.");
+						}
+					}
 					if (Config.a4 == true) {
 						try {
 							Thread.sleep(200);
@@ -484,6 +521,12 @@ public class OutputHandler {
 				if (Config.testMode3 == true) {
 					output.setOutput("123456 \nSuccess!");
 				}
+				if ((Config.a42 == true) || (Config.a44 == true)) {
+					output.setOutput("456789 \nSuccess!");
+				}
+				if ((Config.a43 == true) || (Config.a45 == true)) {
+					output.setOutput("456789 \nSuccess!");
+				}
 				si++;
 			} else {
 				output.setOutput("Unable to select this course!");
@@ -496,7 +539,7 @@ public class OutputHandler {
 		return output;
 	}
 
-	public Output registerforCourse(String input,ServerThread from) {
+	public Output registerforCourse(String input, ServerThread from) {
 		Output output = new Output("", 0);
 		String code = input.trim();
 		Pattern pattern = Pattern.compile("[0-9]*");
@@ -538,7 +581,7 @@ public class OutputHandler {
 				output.setState(REGISTERFORCOURSE);
 			} else {
 				int studentnumber = from.stuNum;
-				
+
 				Student student = University.getInstance().GetStudent(studentnumber);
 				Course course = University.getInstance().GetCourse(Integer.parseInt(code));
 				int r = University.getInstance().RegisterStudentForCourse(student, course);
@@ -556,6 +599,12 @@ public class OutputHandler {
 					}
 					if (Config.testMode3 == true) {
 						output.setOutput("123456 \nSuccess!");
+					}
+					if ((Config.a42 == true) || (Config.a44 == true)) {
+						output.setOutput("456789 \nSuccess!");
+					}
+					if ((Config.a43 == true) || (Config.a45 == true)) {
+						output.setOutput("456789 \nSuccess!");
 					}
 					ri++;
 				} else if (r == 1) {
@@ -677,6 +726,12 @@ public class OutputHandler {
 					output.setOutput("Success!");
 					if (Config.testMode2 == true) {
 						output.setOutput("234567 \nSuccess!");
+					}
+					if ((Config.a42 == true) || (Config.a44 == true)) {
+						output.setOutput("456789 \nSuccess!");
+					}
+					if ((Config.a43 == true) || (Config.a45 == true)) {
+						output.setOutput("456789 \nSuccess!");
 					}
 				} else {
 					output.setOutput("Unable to deregister from this course!");
