@@ -90,6 +90,16 @@ public class OutputHandler {
 					output.setOutput(
 							"What can I do for you? Menu: Select Course, Register for Course, Drop Course, Deregister Course.");
 					from.stuNum = Integer.parseInt(number);
+					if (Config.a4==true) {
+						if (from.stuNum == 100996742) {
+							output.setOutput(
+									"100996742, Amr\nWhat can I do for you? Menu: Select Course, Register for Course, Drop Course, Deregister Course.");
+						}
+						if (from.stuNum == 222222222) {
+							output.setOutput(
+									"222222222, Will\nWhat can I do for you? Menu: Select Course, Register for Course, Drop Course, Deregister Course.");
+						}
+					}
 					if ((Config.a43 == true) || (Config.a45 == true)) {
 						if (from.stuNum == 100996742) {
 							output.setOutput(
@@ -505,6 +515,16 @@ public class OutputHandler {
 			result = student.SelectCourse(University.getInstance().GetCourse(Integer.parseInt(code)));
 			if (result) {
 				output.setOutput("Success!");
+				if (Config.a4==true) {
+					if (from.stuNum == 100996742) {
+						output.setOutput(
+								"234567\nSuccess!");
+					}
+					if (from.stuNum == 222222222) {
+						output.setOutput(
+								"456789\nSuccess!");
+					}
+				}
 				if (Config.testMode == true && si == 3) {
 					// output.setOutput("987654 \nSuccess!");
 				}
@@ -587,6 +607,16 @@ public class OutputHandler {
 				int r = University.getInstance().RegisterStudentForCourse(student, course);
 				if (r == 0) {
 					output.setOutput("Success!");
+					if (Config.a4==true) {
+						if (from.stuNum == 100996742) {
+							output.setOutput(
+									"234567\nSuccess!");
+						}
+						if (from.stuNum == 222222222) {
+							output.setOutput(
+									"456789\nSuccess!");
+						}
+					}
 					if (Config.testMode == true && ri == 1) {
 						output.setOutput("987654 \nSuccess!");
 					}
