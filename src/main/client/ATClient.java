@@ -412,9 +412,9 @@ public class ATClient implements Runnable {
 										Thread.currentThread().interrupt();
 									}
 								} else {
-									int rand = (int) (Math.random() * 12) + 0;
+									int rand = (int) (Math.random() * 20) + 1;
 									try {
-										Thread.sleep(500);
+										Thread.sleep(494+rand);
 									} catch (InterruptedException ex) {
 										Thread.currentThread().interrupt();
 									}

@@ -8,9 +8,9 @@ import cucumber.api.junit.Cucumber;
 @RunWith(Cucumber.class)
 @CucumberOptions(
         strict = true,
-        features = {"C:/Users/amrwo/eclipse-workspace/A3/src/CucumberA4/Part3/example1/features/ex1Student2.feature:6"},
+        features = {"C:/Users/amrwo/eclipse-workspace/A3/src/CucumberA4/Part3/example2/features/ex2Student2.feature:6"},
         plugin = {"json:C:/Users/amrwo/eclipse-workspace/A3/target/cucumber-parallel/json/3.json"},
         monochrome = true,
-        glue = {"CucumberA4.Part3.example1.classes"})
+        glue = {"CucumberA4.Part3.example2.classes"})
 public class Parallel03IT {
 }
