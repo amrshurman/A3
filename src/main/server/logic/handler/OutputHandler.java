@@ -127,7 +127,7 @@ public class OutputHandler {
 							output.setOutput(
 									"111111111, Tim\nWhat can I do for you? Menu: Select Course, Register for Course, Drop Course, Deregister Course.");
 						}
-						if (from.stuNum == 333333333) {
+						if (from.stuNum == 222222222) {
 							output.setOutput(
 									"222222222, Jack\nWhat can I do for you? Menu: Select Course, Register for Course, Drop Course, Deregister Course.");
 						}
