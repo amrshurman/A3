@@ -1,4 +1,4 @@
-package CucumberA4.Part3.CucumberA4P3ex2.classes;
+package CucumberA4.Part3.example2.classes;
 
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
